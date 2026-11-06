@@ -54,11 +54,27 @@ contract OdometerDeploymentTest is Test {
         assertEq(factory.deploy{value: 1}(_code(), bytes32(uint256(1))), address(0));
     }
 
-    function testFuzz_constructorRejectsOtherChains(uint64 chain) public {
-        vm.assume(chain != 11155111 && chain != 31337);
+    /// @dev The launch rehearses the constructor from its factory on an empty chain whose id is not Sepolia's, with
+    /// another wallet as tx.origin: it must deploy there, and nothing about the deployer may reach storage.
+    function testFuzz_constructorDeploysOnAnyChainFromAnyFactory(uint64 chain, address factory, address origin) public {
+        vm.assume(factory != address(0) && factory.code.length == 0 && uint160(factory) > 0xffff);
         vm.chainId(chain);
-        vm.expectRevert(SqueekOdometer.WrongChain.selector);
-        new SqueekOdometer(CORE, NFT, STAKING);
+        OdometerDeploymentProbe implementation = new OdometerDeploymentProbe();
+        vm.etch(factory, address(implementation).code);
+        vm.prank(origin, origin);
+        address deployed = OdometerDeploymentProbe(factory).deploy(_code(), bytes32(uint256(chain)));
+        assertGt(deployed.code.length, 0, "constructor must not revert on a rehearsal chain");
+        SqueekOdometer odo = SqueekOdometer(deployed);
+        assertEq(address(odo.core()), CORE);
+        assertEq(address(odo.squeeks()), NFT);
+        assertEq(address(odo.staking()), STAKING);
+        // no owner, admin or role resolves to the factory or to the origin: there are no such functions at all
+        (bool ok,) = deployed.staticcall(abi.encodeWithSignature("owner()"));
+        assertFalse(ok);
+        (ok,) = deployed.staticcall(abi.encodeWithSignature("getOwner()"));
+        assertFalse(ok);
+        (ok,) = deployed.staticcall(abi.encodeWithSignature("DEFAULT_ADMIN_ROLE()"));
+        assertFalse(ok);
     }
 
     function test_runtimeHasNoEscapeOpcodes() public {

@@ -2,8 +2,1511 @@
   "repository": "https://github.com/am3en0x/squeek-odometer",
   "commit": "8a3615240715afb93f6f0eaa78c0018a7d4676f2",
   "archiveSha256": "fa3071bc2b66027b25b812784643480056fe677ce5f007b5a397243e38f710b0",
-  "description": "Hashes of the unchanged application, art, vendored dependencies and static site from the pinned upstream. This is provenance, not a deployment manifest.",
+  "description": "SHA-256 of every imported application, art, vendored dependency and static site file as committed in this tree. 'files' is what tools/check_upstream.py verifies; 'adapted' lists the files that differ from the pinned upstream commit, with the upstream hash and the reason. This is provenance, not a deployment manifest.",
   "files": {
+    "dist/app.js": "556b16c217cd50a44f04fb29ff2cedf218d9c667c7731defb8243b8273189631",
+    "dist/config.js": "b19111b551345c287fe7329905fb921be0956385f06433de0c0e63cb9a93238b",
+    "dist/favicon.svg": "a7306409cd127cbe224eaa66686280844647e8f6adf7a6d5101f91dec339f5e9",
+    "dist/fonts/OFL-BarlowCondensed.txt": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+    "dist/fonts/OFL-IBMPlexMono.txt": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+    "dist/fonts/barlow-condensed-700.woff2": "3787a5a419171630e6890cfa47c4da067474d005cd0ff8dc11ec090fdc3ee2b8",
+    "dist/fonts/ibm-plex-mono-400.woff2": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+    "dist/fonts/ibm-plex-mono-500.woff2": "01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22",
+    "dist/index.html": "f3c890ebffa1a3a96749048ccef17dd969f8fee804d22965aeb0cba84cdee524",
+    "dist/led.js": "f1941a8313f5e10ac18c7a6f08ae1b92576531c221f735659c79840d4ab6efd5",
+    "dist/placeholder.svg": "a7306409cd127cbe224eaa66686280844647e8f6adf7a6d5101f91dec339f5e9",
+    "dist/samples/napping.svg": "6e85cd9a0918e0b583adb93b8cff50a381d54c8a87b94773f98716eb60815a14",
+    "dist/samples/stage-0.svg": "f68c84a78549158f0bafafa48850eb06e5c71f9e421f7a666551912b5bbcf628",
+    "dist/samples/stage-1.svg": "631af5b4aba83e15553c886302ec95d0ecb049296b83f5dfa73f2219bf852aff",
+    "dist/samples/stage-2.svg": "29029fb6cf8ed6225d6c8a31cb99e9add639409d15308f00fe29bc39e6b74356",
+    "dist/samples/stage-3.svg": "ad59429b5626637b8cac759236057731d8bb9ff8800cadf8235d2e9a59992bd3",
+    "dist/samples/stage-4.svg": "91365c9db8eb27e98490cbeacdb3d0c550ff801bc31c438f3419aaf735ac00cd",
+    "dist/samples/stage-5.svg": "c2c63de2523adf46d44fed5b8407b83e93a3d6021a75cfbc12f4553efe0685e3",
+    "dist/samples/stage-6.svg": "3abebfb720089fa09f38b3fa909f3cbf03d5b09037c28e55e9f478a59aeb0f55",
+    "dist/style.css": "8112f7db02162e73579689b405c2ab10ddca1fa1cb93d23c981bdc0a0f0ab058",
+    "lib/forge-std/LICENSE-APACHE": "933a9600adc4c65b8c60a6f1b74ccb87709f78fdfcbe12b6ed76d8d80c8a4b9b",
+    "lib/forge-std/LICENSE-MIT": "c288b6c79d923d48605b45622dc73c0514f5de5a74530852aa725a353310353c",
+    "lib/forge-std/package.json": "95fc54f0f1656562c50a887000f2e990eff3701500fc46141689d7047aee5dfc",
+    "lib/forge-std/src/Base.sol": "76b05dda37981797d3d403f29fc6cad79b46e2fc11da47d649ff13acb69158b2",
+    "lib/forge-std/src/Config.sol": "850649e2ede6e0e1384ba00eba1335a7af7e97643c731a4587335c0f51f67041",
+    "lib/forge-std/src/LibVariable.sol": "0b789ace36e54d1746d08b9b161f5ab4c2fa55c8d30808421349ae33f703c797",
+    "lib/forge-std/src/Script.sol": "172a6201241215bdc1f552197f9950e4d2ab7f56dd1e1b992dc51dc71d4e17a1",
+    "lib/forge-std/src/StdAssertions.sol": "203de35565c3d68b6599f84e88068f79c23b53a80d18c46056e85d4c5f48613c",
+    "lib/forge-std/src/StdChains.sol": "981b7ce12f4bc3193c7914c68f51be74d1d03c33732db894f5d36ad8025ab4f5",
+    "lib/forge-std/src/StdCheats.sol": "842e68bda8dfa00a8a5a6495a862fc2f1e3bd659ec336772e613ce3602cdc40b",
+    "lib/forge-std/src/StdConfig.sol": "9a35d96aac1abda2c5356a031ac5ea71cbece6bd8bc3dcf4bed98518cd2d1b61",
+    "lib/forge-std/src/StdConstants.sol": "17dfd996881264de1e6af6697a3dc7a56ae8ff0717e4cb4f1685bd7fb3a45147",
+    "lib/forge-std/src/StdError.sol": "c1f7271f11a44628810ef6beb2da0c43add131ff9cfcac4d7acd633c269ccf7d",
+    "lib/forge-std/src/StdInvariant.sol": "7d3a62087c7d06766e99f8e4f4e50997b0ff8730fb304986f2c4cd895a67fbbd",
+    "lib/forge-std/src/StdJson.sol": "433c8ca2b3ae87e2f8a5b5902dc55446528ffd6b8e1af8a333f2eff4403e5620",
+    "lib/forge-std/src/StdMath.sol": "7224cea66fc06c7a9d303084cccb14eaedffe4b21b3f9695d06dc590d2894d7d",
+    "lib/forge-std/src/StdSecp256k1.sol": "3bab3dab8484edfec81f69d001f55817231b5c276aec067ac0ddc7ba57500bd1",
+    "lib/forge-std/src/StdStorage.sol": "cd3e30147de813618446c9eed8c07b8c14ee6989c3b5ad608f72af3b17adedf9",
+    "lib/forge-std/src/StdStyle.sol": "903ea6f4e4aa31e416b5043abecc09ced41dc78c9ce9dabb5c745337ee13139d",
+    "lib/forge-std/src/StdToml.sol": "682e9c74bd02de5df7be595d27fa44eeaf0a5d96ad5c2db507065386d35eb433",
+    "lib/forge-std/src/StdUtils.sol": "52d713d886305184e7ed3b3a2e5941ea1440f071d9c9a4d6fea618135e1d3f67",
+    "lib/forge-std/src/Test.sol": "6ac6a04a9723f3b51a86fcd0c4cf02e8011f112df052a8eea8e986d85b0bb3d7",
+    "lib/forge-std/src/Vm.sol": "80edc64e150244921428ae3a49402282dc638fd44c939b3f1c6b2f9867f5876e",
+    "lib/forge-std/src/console.sol": "894dc6e40fe62d887df6243112d8c775df2db60babc3024ee04a5564b90af64d",
+    "lib/forge-std/src/console2.sol": "62d8ccbd118fec4f99c5e847322d6ca0d7fbe6a0a16e5a26b0590869fcd69357",
+    "lib/forge-std/src/interfaces/IERC1155.sol": "d10916158da2bbecc56364cda787da303b57313d478c150b1c79ac05d3b2936c",
+    "lib/forge-std/src/interfaces/IERC165.sol": "d9bea769cd3aa52c5dfbfe7b447a63b00ab22baaa4f9d2af789f44553078a27b",
+    "lib/forge-std/src/interfaces/IERC20.sol": "cb4bf7f4c0bc513e2c82f251a84e67d2e950cef12e570f40a0d4880b2e25fc9f",
+    "lib/forge-std/src/interfaces/IERC4626.sol": "5b9da91e1215dc84a606c06f636b34582aec6cdf35ae828dce3852f727d9278e",
+    "lib/forge-std/src/interfaces/IERC6909.sol": "44ef6ba5ab803241ed5992f35606820322e2df5947da488870c78f2181d97840",
+    "lib/forge-std/src/interfaces/IERC721.sol": "2e6e000940bf5278cf64f170ac839682667368a5aee7222b312e255ec8eda275",
+    "lib/forge-std/src/interfaces/IERC7540.sol": "5b9e0d90816f47628b2023351c84e9b8d8667f685c98234742be99dc8eaf2fb6",
+    "lib/forge-std/src/interfaces/IERC7575.sol": "15163bc29d96c6b905b53da06e243fbd2ae6b7c8984b8306ff4c9b0716ec055b",
+    "lib/forge-std/src/interfaces/IMulticall3.sol": "890a5b361034daa6006b3ba2275e743cd6197c4d81e3df5732cdce731d3c0868",
+    "lib/forge-std/src/safeconsole.sol": "fd74d8ed377e1470217cd6dce7699dcbc4e79b3893f17ae2a298c0e7e4418181",
+    "lib/openzeppelin-contracts/LICENSE": "3f23fb5039b202274940dc39340f5fccd92b84713dee280ad53435be1b8895cd",
+    "lib/openzeppelin-contracts/contracts/access/AccessControl.sol": "74c193e45cf09c09745b2ed5261946563acd1702f30d42cae4f42b53f5d3797b",
+    "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": "140304b7e99d517c57a13f391dfd3b550ca633a507f7b2af130f391b6cd89cc5",
+    "lib/openzeppelin-contracts/contracts/access/Ownable.sol": "38578bd71c0a909840e67202db527cc6b4e6b437e0f39f0c909da32c1e30cb81",
+    "lib/openzeppelin-contracts/contracts/access/Ownable2Step.sol": "c75345d7b9feef17ae29f2a800ca2f65f8021cf80436a41d6ec00f57f5180f36",
+    "lib/openzeppelin-contracts/contracts/access/README.adoc": "25ede3346999b034c4dcf58bba125c83758de8155a303d6f9c23bb7a60adbb60",
+    "lib/openzeppelin-contracts/contracts/access/extensions/AccessControlDefaultAdminRules.sol": "2719c049d8278de8c1e436554ae6587a4193f4e39b3b0f49242e4e1e3e37dcbe",
+    "lib/openzeppelin-contracts/contracts/access/extensions/AccessControlEnumerable.sol": "25b45b146ee0b76e4afb33b5f1960b119eb81559ea343242f7145fdceab30ed0",
+    "lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlDefaultAdminRules.sol": "cfcb24ffcd5901a1f4293356f35ea01388f8b82f994a7a0f2a7187d651095c99",
+    "lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlEnumerable.sol": "e0f69ae5acc588f27b8eba7f5a625f01409be5bb4a08e825774ccee32efc0ff9",
+    "lib/openzeppelin-contracts/contracts/access/manager/AccessManaged.sol": "16c57dbf82fb42ef7f781f3664a449550ee904ad67ce471c677b3673d990b61d",
+    "lib/openzeppelin-contracts/contracts/access/manager/AccessManager.sol": "f1dcc1183d70aa4d4211a2706dd5293076569f2be9678adc71a191a4e0d597dd",
+    "lib/openzeppelin-contracts/contracts/access/manager/AuthorityUtils.sol": "7f1ee8b917f3daec571f6be77af74f7d7927d0f879bdf4314533df92998b64b4",
+    "lib/openzeppelin-contracts/contracts/access/manager/IAccessManaged.sol": "2ef4db4c7c678372fe79af348ce3d60d4cf7136d195daf7a9bc2e434ffcbaacd",
+    "lib/openzeppelin-contracts/contracts/access/manager/IAccessManager.sol": "7718f178ffe95662a9efd94d629fe5906ab8d89b4f609ff02c3fc61f7a5375ce",
+    "lib/openzeppelin-contracts/contracts/access/manager/IAuthority.sol": "68428ead009a99c5270e2a0a93e4d2756b6f332ee14027963cc7bb06cd67a29a",
+    "lib/openzeppelin-contracts/contracts/account/Account.sol": "0b369f92306a68343f05a6d720644a3d71c1c935b206eae5687a82102c267ad0",
+    "lib/openzeppelin-contracts/contracts/account/README.adoc": "45f01398fdd717b075bb1ab445e2fd75f3b64ef5a9085639a43482fa3a43b81f",
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-AccountERC7579.sol": "ef8095096087aee1f564838aa38e668410129dd431e203a03869b61bfa2319ed",
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-AccountERC7579Hooked.sol": "43c24e8179da67d87c571d3d2c958813d26bf0f68748c731eb7b90cc7de5fd9c",
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-ERC7821.sol": "677052f84d703ab0d18938e09d09dfecb0c5188131aa80cd1996a19e69b9255e",
+    "lib/openzeppelin-contracts/contracts/account/paymaster/Paymaster.sol": "a0405095c8977ee3de67f3d42ec15e20f9026ec58d39edaa863e12f739fef3c1",
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC20.sol": "a6e7ae9b9c0135e6ac740dff0f0290946d54b8915403f202a803d6af08ea8713",
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC20Guarantor.sol": "f6ac4d02b574e3e35b14a8686fb50c3f0dadcc3efcb6eeacf39268025d5354ad",
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC721Owner.sol": "2538205e1c37375a000503e17aa4646168f46393bf4e7f940b1a3eddffef22a4",
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterSigner.sol": "373a50b8fc259f583a3c335cda6316c1a8f52c450be4e799647469260d47411a",
+    "lib/openzeppelin-contracts/contracts/account/utils/EIP7702Utils.sol": "06b0855e903f05d3f843712b7dd2c999fb0424f22b5bd025088b1a47eba7dc14",
+    "lib/openzeppelin-contracts/contracts/account/utils/ERC4337Utils.sol": "c693bf6aba6fb7466edfd29542d8ba552c6f860c4f2067cc7786bf1804573dc5",
+    "lib/openzeppelin-contracts/contracts/account/utils/draft-ERC7579Utils.sol": "cb9219eda7e2efb09e9b15a4419ce68ef68f89ec497ce6f3e950c8de8385bfd1",
+    "lib/openzeppelin-contracts/contracts/crosschain/CrosschainLinked.sol": "8781045bf7feb1793b87092da346df1bc08211747d4e065b686e572926777bf9",
+    "lib/openzeppelin-contracts/contracts/crosschain/CrosschainRemoteExecutor.sol": "34b348a8b64ce04569550a9b1d67e67f9701394bed7a52532dfb2c8488670791",
+    "lib/openzeppelin-contracts/contracts/crosschain/ERC7786Recipient.sol": "36e3cc6c0c3d22c4934ddc985edaf271f5d19d78467b9322fc91be3d7017dbb9",
+    "lib/openzeppelin-contracts/contracts/crosschain/README.adoc": "7332ca14523e631e273ef2afded6ed1ddff9fbab605a1c9aec7305f4fd1da580",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC1155.sol": "bbcc1e9d8ef9305a068dea961dae2670e5392b3f9e6cf18f38ee83fe047413e1",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC20.sol": "abc5c26cae076e5197a51cdcb161b95453aad863675c6a2af3746d9e14a81772",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC721.sol": "ef5adec12d888af878a9a378d89936ce5e222f8d014aeeb29ac4f4a4b1396f5c",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC7802.sol": "4988680aa64fb8025d8cd9c0870d477e71abf82f0cd9be00b99a0c5476a371a4",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeFungible.sol": "86aaa933707218919ed7cf971026957499367094bd79bdf37caff64d9b74db73",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeMultiToken.sol": "4b50e23b2918c407a737db608656cf9cd89cbe4094bb467c4224d77957ecb6be",
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeNonFungible.sol": "fd2623d231ec82d94516a63487656ea5496c2dcf853d7ae3bd4922e02f287088",
+    "lib/openzeppelin-contracts/contracts/finance/README.adoc": "a3c29e47d2d7855427207c8bf26560bac9085961ba10123ff9b662f90e99bf83",
+    "lib/openzeppelin-contracts/contracts/finance/VestingWallet.sol": "7c80a2b0c704dcf472bd38693e5050f0bf37345442e97166129e103d0c26fe0a",
+    "lib/openzeppelin-contracts/contracts/finance/VestingWalletCliff.sol": "bae3c711848d11320f188092952baa595c6399f9db5c3bcad94682366c489ce3",
+    "lib/openzeppelin-contracts/contracts/governance/Governor.sol": "0f6ed9b3585620135d2785f7070d54af7c4cdcc6f6e7c9c971fbbfa4ef6f49d1",
+    "lib/openzeppelin-contracts/contracts/governance/IGovernor.sol": "574762993526c5eb43c9c47461c82ea43ea88f60ac83f31d261e7f947ae470e0",
+    "lib/openzeppelin-contracts/contracts/governance/README.adoc": "a102a1cce5ca48337e5ab616a7d9b8822c01d1cdc7269829d140c319af86cca9",
+    "lib/openzeppelin-contracts/contracts/governance/TimelockController.sol": "69fb93c05f267a3dbb2ad4e8c4bdfc1c34bcfb7eac61bafe240e6cc38a1c27f3",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingFractional.sol": "1daaf420a6690c531dedc5cc70dc7c2f84372b7f05c5777c93fea791fd3b87a0",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingOverridable.sol": "d23f14470e8947ff55d2af0dbacebb912561086e1276373a91c6ccffbb416bd7",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingSimple.sol": "8a5fb26cc823d078e026931afacb83c6bc25f06f8ee7abd9486c2b5497680d42",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCrosschain.sol": "85b6cc8df6bbd922da78091c36c03e1ee8cb0b98e3ebd021d955c4ef211883cc",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorNoncesKeyed.sol": "5d8ee547d7c4beeeb0fa42ac77a4d05d01bf86690909a7bafc0b65ce57467bac",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorPreventLateQuorum.sol": "ec9821a328c64bdfb0705dd60fcb759d65bc5b9f477bcae795a2be2a558f91ab",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorProposalGuardian.sol": "7bfd92dda8d0d005cde619204af7faf820f8e8b784263c79b83aba11dd6a7313",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSequentialProposalId.sol": "8397bb8b90c99aa36fd1e5b1e993245db9d77fa24056a38cf642357ea160f36b",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSettings.sol": "bff3837e8deb8411352a71e43a0706d266b3dce29ef6fb5ce810af87eae3dbf7",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorStorage.sol": "51569b2f80b240586036e9e907705dfa30c65a116684699390ed9e697e7cf44b",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSuperQuorum.sol": "89484fb71e28eac20cf35629467023ca6da3a20d5a7f0ee1b4cd0b903443ed3a",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockAccess.sol": "5bcc9bbe759e467b4974eddfb92ffee8b93af8e49be03300bc2d3ebe5a532908",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockCompound.sol": "0b0a23db1d272895ed6298f2a566bb82e69209eaa275f38a53ab453651d52860",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockControl.sol": "c00fa275cc82bdfdcd1d6918816292003f98732ff9acf34bdadfc1d5638df8d1",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotes.sol": "7c8fbdd976a17692ee4665d2967cf78eaf9148fc02f200f950028732a149dff3",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotesQuorumFraction.sol": "8b4e91d2dea7423d568008baa0a02dffc842ab9113b620f17239c5e957e279a3",
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotesSuperQuorumFraction.sol": "5577285e6d5e16f742721577f9cb2bfce8ca61caf3d82e323691a52465f610af",
+    "lib/openzeppelin-contracts/contracts/governance/utils/IVotes.sol": "059fcf54ee8e21e9dac976491d7d7441049ce12e351a8c66b894846243b60a0b",
+    "lib/openzeppelin-contracts/contracts/governance/utils/Votes.sol": "ef4491fa8d198dd7e0e0cf0ca4dc5b4d69f4d45e3b4e180631da15347c88a213",
+    "lib/openzeppelin-contracts/contracts/governance/utils/VotesExtended.sol": "031701b36bdc4a07b27fffae0c3d50c1f40c1cc4d41692fae3579de6bb039701",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155.sol": "4a472558a19793bd1ec0f09fd47c84774dfefbd15f9ba79f627de73629ab4df1",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155MetadataURI.sol": "bf8de067ebb7ec329c05c593f006ba6fbee9dbe9ed00dcd1e15852653c3ca5ec",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155Receiver.sol": "825aed7cb9f35079f4b12ada24b5cfee5e6a0bdceab0ae6fc3794d69e3d322e5",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol": "2d17bba201aa2f9c55e317315b872272a60361848dfceb6b1e77081265c79a27",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": "9c3a75a925a6dac9e88b03cddc58d42fe3131b0aaaad84408521f3f7af2f991b",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363Receiver.sol": "d4907d19dd95d016b941d5746b38a39f75aaa9ed5f2fb53bceb6a6f6847f9c99",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363Spender.sol": "594582216b8d5e0a5ff75d215f03ff8d1ad4fae69b069f04bec51ea6b605a9d1",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": "dfb3f56fa928a7c6cae41a7ce2c86b9210fa18d33fa26389099d66a0fa790368",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1820Implementer.sol": "99459de7cc9e3387a01835c34a6b5122163f20dbf19d4b1c4eb34489fe25c0c4",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1820Registry.sol": "d5c38c7fc97a0fc4c62cbe1987146e5a5ddfe84288dc84626f8affa41ef3d847",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1967.sol": "c4e901318ab6d4963582c62c62ce988a34c68dbae71846b67decacde79e9a317",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": "0158e2d3e0e28bedd99eec13dcf1a8aa3a70a5b7e4bb2ad709609c95fcc740d1",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC20Metadata.sol": "0ef8d844d8e066abd5c0d8cc1c550c89f2628a4ea9c9bb16c7593d4207800ca8",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2309.sol": "2ab56da6dac8b546c51c7311b96c7aca24b1ba44914e551bf87cd532c6ee78af",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2612.sol": "7ebb71cd1a464a22ce7a4cdce29115d6569546fff8d5299ca3f2f7ba72b8e540",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2981.sol": "81e02fff5fb3232e4e2761c03a316ca269bf971727cd1ae4c4a025a7b376df06",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156.sol": "9fbd10c6970c328f348c9a86604bdad336743caeda2547f94b6a86d8a906c961",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156FlashBorrower.sol": "029663fc4b68b183f75ce48d2b4ff11bd698b91c69238d0fc7cb7cec55c5e2b9",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156FlashLender.sol": "4cc8e3b92331881e4caaf0fe04f88bd78e0c55cdacbfba55ebfedea6d41a8692",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4337.sol": "1b47a29d21c6397bc1d94267b890e414d1cadd1422e7edd821c7d3b74da05f03",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4626.sol": "82ee1be39e06c68f90d48417cdbd8fd0213d6c8129088c9f450ff64c0bf770a5",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4906.sol": "2b14563481c355e6a84127f0ee528d3e3b80fcdd76ff840660784c2445fcc0ae",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol": "f89772d2d4fafcbef8b73bb10ee9a3373edec2eedb2f1b302320915b351dc3d1",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5313.sol": "9c99e3d0f9a47337d59b7e245819b07860e329789aafb5d1275ffd27491686f0",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5805.sol": "2b1e317a9ad0303948d00cfee78c42f99f7558c8d2002a7c63f04d2b70324cac",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6093.sol": "d56b4239e73bbaa9f5426d1e7b3bd8064a59cbd0f575d3538a0be1e5812fa86b",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6372.sol": "cc16276c221713bc438556c8236a8a785aef60adc25318d9fc06712ad8fadd38",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6909.sol": "2bd9e5104fe1be460120c9c63017ef259e691042772f5d54692aa11793194783",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721.sol": "4e4412e3eb28d5d2055e7b0e8153a2ab4d143f94e125a03a1b3d655ea7ed0002",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Enumerable.sol": "3c85a8e58edeeb5efcec3d274a25324c025d276fbc8d3d27d5ef4641fc1ca3c0",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Metadata.sol": "a8c823f1cee29f7169ded5e4a9204805343fd73d2fdbacf62d2d227f66abd960",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Receiver.sol": "875a2b4aaba1fe08770657ed44fcc4754a8f1ffed954eb06462dfe3b44338614",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7751.sol": "7eb72765cde6f7232fe1149cfaa51b6404520280902f6940693c42674941ac83",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777.sol": "9ed85c11bc308eeb33977efc9068fa948f952252982628c3729dae36c33684ab",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777Recipient.sol": "48473616ccf361df33723be1aab911bb41ab481dd9f2c3b4d2323bbba2523299",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777Sender.sol": "4ddc762186f658ea0a53496300c830c98f4a915c0a52afe5ddbc793ac3697ef1",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7786.sol": "3a20d37c1cd61d9617dceea6a168d22c4c75e1caad7f8f5dd0928219c4534b14",
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7913.sol": "f66aad4249885b0f11369bfa825dded60aa4baa0d76d9becdac9daa48c350350",
+    "lib/openzeppelin-contracts/contracts/interfaces/README.adoc": "e79e230ea0c75a7db9be77e1bfdd5326442ef775c8546a32e7ae0cc3d21d0804",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC1822.sol": "73653312bc2eda0ec231553a5295242eaef2d4f46a023532d45fe76cbd0f565f",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC3009.sol": "385f508da002ec270fcb13411b04535fb2fc1f05c05a163fdb4b7417d047b3b8",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7579.sol": "be19c176e755291ba2d712f99e95f7cde8025678579eb9a4ef9f7d32317c0fcf",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7674.sol": "5e4dab6f3e075df9a22ca7d99c407e813b3444e69b23be10fcf92be1de0fee05",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7802.sol": "f710e268850d13695d0cbb01a3ec8490e704d4a9a98bf889ac7b4427e87eb687",
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7821.sol": "809a971f062b7961518c410357d2cfa234ee3e07b08eca863c6aff5c54b85de1",
+    "lib/openzeppelin-contracts/contracts/metatx/ERC2771Context.sol": "6f0bf2dfc6aead1ea285c982b1f526e5837b47295950f430c9373508ccfd0698",
+    "lib/openzeppelin-contracts/contracts/metatx/ERC2771Forwarder.sol": "9f4e241d9c2cdcf5cd8ccf3fb243639f46b452297b629053c0a83603566d7a10",
+    "lib/openzeppelin-contracts/contracts/metatx/README.adoc": "b7c4af8dd2c5c58c8ee2bbf22e0f1e5993a846d7e99b05da0b04398363be49b8",
+    "lib/openzeppelin-contracts/contracts/package.json": "0b438a39dbf7fcf652cd551abd989a80b4b60a8a4b90f9e61c35a170c46b8679",
+    "lib/openzeppelin-contracts/contracts/proxy/Clones.sol": "f4ee5bf43c1200cbf538ddfdcf81e37ff66a8da943c42f969461492332ba1c54",
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Clones.sol": "4bbc962aa8b80c5b016f8f3062121ad845bcd939ebae645a32e89b8137249e30",
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol": "41a3040398d53999dea3251ff8906e11ec1a699362a1d8f4a55bfc7709cc00f3",
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol": "4cc2cdede1fa3c6ec7b96d3cc096e5a84b3c0dffb6da84b60fdf39c0ed75b8e8",
+    "lib/openzeppelin-contracts/contracts/proxy/Proxy.sol": "fa8aae37b2939371fcbce48b814c0d5c7e57e3e267f348459f29941937746c98",
+    "lib/openzeppelin-contracts/contracts/proxy/README.adoc": "6d018ec2e4c17abe999f44c5daf466b35c081cbf021c594ba693a36960665ab3",
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol": "28215d3fe4038556fd4878a6dd823663338c3eb641430259a20205da25255909",
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol": "c1c9726bbb0ec4c540c7c98059dcded69a8586b46c168036672381033ee76239",
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/UpgradeableBeacon.sol": "b2defc5e0835068295138f1b42263acb0b22ed08fd90c9f7f48799bb336dc47d",
+    "lib/openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol": "c11742ebeb0129863c25d5e62effc3ef5e5d55ceeb88d36a0cf0304c1feb9d64",
+    "lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol": "4ecf6fc8b55e13afeb0f97b7f815b6f225eca50e838b7dfbfa73f752701f14a7",
+    "lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol": "f527a063813c2bf60c153fb08e38539578935402894fcc36fac42324ca325d3b",
+    "lib/openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol": "f9d8c6f14a3d8f8927b511df449720b1ebaf357786d0a271b4f92869f0b1936a",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/ERC1155.sol": "de7bb76989e4ec4f54072b970af2acc126de946ef0c2db864b1dff4c0e1ecff7",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155.sol": "96f66d4f63174c87a50690950959685ee18342b6c273d2b1ad32f13cac6cdf06",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155Receiver.sol": "d17fadc3c8b7507a5981ff32669857478abf9457c0c40daf5591bfd5eeacc0cd",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/README.adoc": "265c6439aa691f70ab94a390358d0dea779e1ded151bfed5e4dcc9b46626368f",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Burnable.sol": "34d9d26c845c4de382b7d90d0fb15da700eabbfa53ee0869daa89bfbcdb8d5ab",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Crosschain.sol": "23485a2d096dc24b1be4fa0a69aaaa7894f6676492a06c2ae74142939e3419b7",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Pausable.sol": "9a43c883f6f7ada86b46c40fb322031751d9ccf02e044280041b1da80cafc2a4",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Supply.sol": "4feb9724c39d8f00fa762788e4a62e63b6b561e3baa763e843a830c5a5f34bfc",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol": "33bd6fdf59a907e9311b436426b0baa894dd4a0165f0a2c9d6b1fc0447263347",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol": "d5a148ccf8ac24f69f734cb2bcfba55ecc1d24209bf7aaa022cf3bde4bbe274f",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/utils/ERC1155Holder.sol": "a0de64616df2f1ad6f0ba770e27a7c9982dd8b6b781670cedce8de48468d4b09",
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/utils/ERC1155Utils.sol": "6bde2c351f523097037e604771e389459d59d90bdecb61781fae7bce9766400a",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": "acb04d2fd908e2e4d76d5a964fdb46aded638a927c0b05c29d690fd435650e2e",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "01b6f5c4fa45fd38822b286ecef6daf983d27306dd6362496fa71b3e4600b72c",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/README.adoc": "be6aa92f419d57740d404d3ef001a522236102993ed176408ce85fa98107aac7",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC1363.sol": "0665e878c4e6e6e0da4237b7a3e5ece36655c0a493ec9407ac7ca3c2c0b1310c",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol": "73a072fe19957844b14b87a3ef77283d78a424a6690f03f32928f94e4b042b41",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Capped.sol": "2403fec28c40f964320bfb4a025b12392ce240c732f648f9080e3521418ffea1",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Crosschain.sol": "ac5760c6d11aeea18a47f03aa3cbe03ab7c4f97b53949cce09c76a135773d358",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20FlashMint.sol": "5f04a28d81cc26dc70241e0058d3da940845578aca090c633fdf741b3a1d9b8d",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Pausable.sol": "80615790b9c9e5a0ad82997e86ca0c515cb21721f27096d171126227f24533be",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol": "d778157dfe01ca9e0e6347731817e828e38358aa76695a8d32ee29287d1fa81f",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20TransferAuthorization.sol": "703f86bb63f6b7189aab562308417c5f69baf5a070254aaccc78c050744c0670",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Votes.sol": "b08316e14df59bbb16c40f453a0398f237fa0f160f52f0b03dc53cd1aced9857",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Wrapper.sol": "38912f2786f0f013e2af77a1a32d7afdb02b2410c3ba45df3260f1e34fbb6015",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol": "2eff29f87038b46489a28cfab73f2f61c835ac32be723e57ab81c24ae422344e",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": "0b7132f17d14d1d84b41b0bb429be62dafdff00fd3470f68724d8018eb07f57a",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol": "0c9c2fc86dbdea22e415dae0bd0f4d6cd946be2b713dc4605309f51370cc5030",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC20Bridgeable.sol": "529326ba918d9e2c9658fc326446121b8128402ad91d2ee1e2aaba6b536476ca",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC20TemporaryApproval.sol": "94dbc9e45646e08f4424a289095e982b3c237bc9c3e6ade9baf954818e52346a",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC3009.sol": "96bf3e7fc8f4eabf5fd2402b64994eec9a31e2bee3df8cbeee5a519924445907",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/utils/ERC1363Utils.sol": "6a6e72e09dc108af25ff2b8edf6f7c6c746e4cc5a79362d3b62b710911586975",
+    "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": "56111cb6ab438f3d3844f741cd3a482b52665b6e9c10a96e5649d8fdf8798634",
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/ERC6909.sol": "da46c4d4781ff6aeb07958ec46cea98a0af306ac6c012e8f30b619b671b71986",
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/README.adoc": "564ff2df98e62375f01f008454dc7aee10925466cc81b840f270cd093bd84a23",
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909ContentURI.sol": "347ac386e6cd0f2371746711ac83ccec582cb20c0ef779afe1301bc85d3a953d",
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909Metadata.sol": "d507241ca42cc156a7a2cfe70e4a988b367493cf2d8b0d07bae67d865944d63b",
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909TokenSupply.sol": "61d2997866f2dd0ab66cd24fb21a361110738271658479de48e8e1dca2876352",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol": "19a3e70710032ebf33c022fc9f36091fff8d5de6fbdf93a81c74fd1d8b18b738",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": "ff0eb9902bf0ac099205615fac90eacf34fae637571b05aab3ea35dea53d5f17",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol": "c9d1f120dd53a7eab2b2f14011c9b2028be9e9292a4850941fe0e18c905c8438",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/README.adoc": "c168144f83a2950925e562eaab39cc91c873912828f5893eb28415e5cf1de6e9",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Burnable.sol": "bd09a1516016fa44dc227fb00c503fa4c04415093106ab1831f6f3bb428f75b3",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Consecutive.sol": "e9351dc58746ee19d1e0ae106217951b2d31af585b28f278255e658ddb5adf2c",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Crosschain.sol": "2a7ff0173a44f05a50565eb0a754949e202969af8536807fe0557d6d25dd4a2e",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol": "eee2bcb1efe78cf99a795f7d1d5e72a2a3e93a2d68a6c195adb7e1a8438c6b53",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Pausable.sol": "f505c3c6eb77bed7ec0d7dcfc967c0347c53e87ad5e3c7089fab56eccfb5e011",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Royalty.sol": "f7a4d4819e46b46bd7be73e2a06aafa8fc791ec416ae36a37726b5f867911295",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol": "d6c8a6b43d65a148ed0bd217d0669f0615fb793ef5653396bd094abae48de92d",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Votes.sol": "822b70258a89e4b9ff77acba6cc217c8bc31e50bdd556ebbfdf335f0c1f07ce2",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Wrapper.sol": "d1795982c65a93e2c87565397951426c7a44eb1ec7dff3184341b428ea896bdc",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Enumerable.sol": "03c8c0b9ebbe6fe0a682332d9f980723996a1856ff0a767378eae95288069649",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol": "33223782ea652dca413702ce92f9f59d91d758a035065b24bbedb7dc60c63a78",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Holder.sol": "2d50f70b857cae57572c0139e3d9d84cbe3edcc18492581af36befa15c36cb3f",
+    "lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Utils.sol": "bcded066c2dc3b6d75f5645053f4611163b07884916018701c07788d428066ce",
+    "lib/openzeppelin-contracts/contracts/token/common/ERC2981.sol": "965937029e29fd6a49dab6cbf83c82e1deaae8789c656902238f4b6176468546",
+    "lib/openzeppelin-contracts/contracts/token/common/README.adoc": "857d5d0274fd23ee9ae0f06eb7d85302c3c24dc5613b5c9aa3cf0e49765df3e5",
+    "lib/openzeppelin-contracts/contracts/utils/Address.sol": "05f6836def73b214f575fb23490550021272515b4cb928f5e36ed9013722c692",
+    "lib/openzeppelin-contracts/contracts/utils/Arrays.sol": "252c9e582eeaf2547753401170c73c858810f15a645f936cf8a20a39b08b89f3",
+    "lib/openzeppelin-contracts/contracts/utils/Base58.sol": "47d01b6516325d809c77aeff6cb27f89bfb4c14524974732fa6ac11323da6193",
+    "lib/openzeppelin-contracts/contracts/utils/Base64.sol": "1c143572893f50f04fe8e507d89f9997cd3242102ba4200c8de0803ecbaf8cec",
+    "lib/openzeppelin-contracts/contracts/utils/BlockHeader.sol": "0acf9b587d03301a10473037b005968912c47b07422d70282c8754a728534c71",
+    "lib/openzeppelin-contracts/contracts/utils/Blockhash.sol": "558cae851261e33e7272037d547b40b891bb8c55dd99caa5acdb6566b79b6712",
+    "lib/openzeppelin-contracts/contracts/utils/Bytes.sol": "fd994316c50014406f814a95f0a1ebc5419ee602fac27d311d0f0afcef213fe4",
+    "lib/openzeppelin-contracts/contracts/utils/CAIP10.sol": "6de74237c509798eedc49710eeaabf1dfc6e894be2c8f3c003a151af3d3ba8e3",
+    "lib/openzeppelin-contracts/contracts/utils/CAIP2.sol": "cbf5e18e186a00400705880a4125d7e4534cdcefc484f96a33bd4b355bded8f6",
+    "lib/openzeppelin-contracts/contracts/utils/Calldata.sol": "f400ffb13072d2cbe1de51c78e4fc38d1c29e2b1d7cb0b53c2641bed0effa4d6",
+    "lib/openzeppelin-contracts/contracts/utils/Comparators.sol": "52fb1c8f57967d42a3214bde4a8a414ab25c2e3a844d00e171ca56487024e009",
+    "lib/openzeppelin-contracts/contracts/utils/Context.sol": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+    "lib/openzeppelin-contracts/contracts/utils/Create2.sol": "9623aa59745a23a72f313adc5adbf583968bf366a7cbf3fc43c1148d7d2c3c86",
+    "lib/openzeppelin-contracts/contracts/utils/Create3.sol": "2f801382800e64ac1f4f16a21914c0833cc84a076e06a4ad95f22d14cc8604c9",
+    "lib/openzeppelin-contracts/contracts/utils/ERC6372Utils.sol": "c413d812a3e36abc03443b5d4eab8f2cabc954132a177cf08fb7abbbae60cb08",
+    "lib/openzeppelin-contracts/contracts/utils/Errors.sol": "0704b9d6c032cca8512a3bc3f30f49f86f1f03102d2896a3d23e794b82efea66",
+    "lib/openzeppelin-contracts/contracts/utils/LowLevelCall.sol": "59c54867249543d56a6c52bd318af5bf3b350995b4aba19165cbfacb4a887178",
+    "lib/openzeppelin-contracts/contracts/utils/Memory.sol": "5505c04e159e1af0f6ad34609b432031c3a7b54c8a66ca93bccb5186c5b13930",
+    "lib/openzeppelin-contracts/contracts/utils/Multicall.sol": "100caf08111f576ebf6b82c40fd5a57e8d5250ed2533df776e5899a196131e4c",
+    "lib/openzeppelin-contracts/contracts/utils/Nonces.sol": "6a98ef6eaaac8dfc73307cb0ebbed97bfa20cf825c7fe96b734e3eda7e935e09",
+    "lib/openzeppelin-contracts/contracts/utils/NoncesKeyed.sol": "d0fb13d6c12e3654985514ddd527e1c16ba6bba5f310f6c49b8aae8ed3c735a5",
+    "lib/openzeppelin-contracts/contracts/utils/Packing.sol": "3d2460df0c1ceff6040216e1fa55d7aa1e37b96e6344db439e84f08f4e3f6c43",
+    "lib/openzeppelin-contracts/contracts/utils/Panic.sol": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+    "lib/openzeppelin-contracts/contracts/utils/Pausable.sol": "041168a623682a2a3b4d9566487353a53ab5fc977df042c4b7882d8485eb6423",
+    "lib/openzeppelin-contracts/contracts/utils/README.adoc": "da21a91f817d72f9c1db14aae87b0d1698ccb82b6cc683b40bfeff3f13f796c5",
+    "lib/openzeppelin-contracts/contracts/utils/RLP.sol": "e0ec0807f87a3e291ae05ee113edd14f299a41b4c4a80d7232c87efdd5ef031a",
+    "lib/openzeppelin-contracts/contracts/utils/RateLimiter.sol": "a89693b7bce7229803ba3e1aac5a8a55e4e9dc315d59966d7ecf7c5c165866e6",
+    "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol": "94e409e8f6e3184236651a6cc2b1a6a3ea0f0a25eb85b71e524ad5791bb2fbc8",
+    "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol": "cff7c20aed945d939b764d876adbd42e1b7725d62d5b1f2bd303db237567b575",
+    "lib/openzeppelin-contracts/contracts/utils/RelayedCall.sol": "d2b58f99f00ea2a4fcffaa35122f02efabc144851a38a528dfb9735bc82bd5f7",
+    "lib/openzeppelin-contracts/contracts/utils/ShortStrings.sol": "0b66f6166641f1951f7a412d55df071224f1ba3a629bab73d185505026851c06",
+    "lib/openzeppelin-contracts/contracts/utils/SimulateCall.sol": "9acd6f014448cb3f4cbea2548597eaa80235b26746829f79c156f39354a8f617",
+    "lib/openzeppelin-contracts/contracts/utils/SlotDerivation.sol": "41982f34f3108f95a3aebc23e77689fc1dbc977589784e32edf06e70782d50de",
+    "lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol": "cf1e3a87912e70ad4a342a33b0227f73d9b02cf2a8dadfd426a81173f24d5b91",
+    "lib/openzeppelin-contracts/contracts/utils/Strings.sol": "c4309a0e3d9347d4442a3679d3b3b8b1ffef2e49ff5b8b7469a6837040023e90",
+    "lib/openzeppelin-contracts/contracts/utils/TransientSlot.sol": "1ac959d76fef4da750046ad7e9d5c274eb3f3bdc4a1e2ce181ef0708db362b4b",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol": "f6c2053844ea9383ffa83c9fd49fde56d292d866e7176817d3844f28e49fc532",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol": "7b5445a0b53365fa9c84c08c7178bea16147045481a80f0c21c76471a9134e81",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/Hashes.sol": "ecdbce11c5ecdf32b306e26b8ab1b878327c08154b4ccd04518b6b64b298cf31",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol": "267f2312c355dd87246b764849bea13354197e46d61a16fc386bceea4a3e6b67",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol": "32c8023fa14c7fd48345ad27770648efb5094cbd92b1264a30dc4b2af3317446",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/P256.sol": "7dbf37d6e7b9b8b0d6585b1f975675e54283c833d686637c583880f83ab9d9e9",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/README.adoc": "4bf0cde2955a7742c2f89aa69a6d3a5ac775624c85a1dc9317f73550715b14e5",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/RSA.sol": "3dc204ff75b9a051c6e6988bbcb76987a890e733475a044543c3a36235694b95",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/SignatureChecker.sol": "7ab6b4ee5f4a40ed6cde5767639784dba0f01e8144b54d38c9318386b7caa791",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/TrieProof.sol": "7283b2dd36c208041b65d174ebb0bd64f60fb47e53c5b68f812122d6c6a46fa5",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/WebAuthn.sol": "3126a814fdae6a953a1d36792aa43c6f2665dea054950b9ca970cd96197b577d",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/draft-ERC7739Utils.sol": "d212f9fe0c4d6588825ae41718d5f76ede11aeb306aa13a5b801a75612327bab",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/AbstractSigner.sol": "1119a95e6a2b709a6961fc9d5aa0a3d43249857d2edd05a174e191c573329111",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/MultiSignerERC7913.sol": "ad85bcae7bdfa091df285bbf9327cc706e55ec69223b7df78a3c748244490034",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/MultiSignerERC7913Weighted.sol": "a1c9ce8208adc86cb5935ac68fa8392f49a2bf1e94f72a58183d1724624c4f0d",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerECDSA.sol": "aed7d92a3b9cd372f591474894265029e34c4ae688c4d087f8df2eedb675988c",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerEIP7702.sol": "f24633d50edbe9a70ba2ecdabffe83c89df1c0b487624a48c0be4b0fb5f73e3c",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerERC7913.sol": "3c16f85e3121c2c7bb7ee50d0452ed14e1850d69a379fa44564e735d84627c7e",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerP256.sol": "74036f4ecb9e58576b13599cbf66ea3fcb3b09540c17f17198b04b0f23146c26",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerRSA.sol": "4131ff09ea97db2214760840c2a45ce370bcb7cca4453344824585ea0b411bbc",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerWebAuthn.sol": "7cd76dcc42b47072742f3bc29b3b806619c93ba5b53a8552f697a577fde9eafd",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/draft-ERC7739.sol": "d29e830913cd3e8a622cd2c4ee7413d59ad7a58b139d55fbded00c0418672aaa",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913P256Verifier.sol": "f33e293a6e431293d904ec27a29c301400f6508e14b2ac5bee38ed5e457fa631",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913RSAVerifier.sol": "8fcb2668d2a3836aab390f7cdb407bc4dc357a758ae02308be9d8ed60934b399",
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913WebAuthnVerifier.sol": "dad92ffafdd4af49b4c0c2caad519c8e4594843d3c4739fbaf43d8764cc9deca",
+    "lib/openzeppelin-contracts/contracts/utils/draft-InteroperableAddress.sol": "794ff58acd232bbfbb4aefe23c1564edca477e5bf120f61e4696c6f9d2ff97d2",
+    "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": "61a2b12c96857aaa35f48aeda67a4281637a42494c0b3795be0ae976aa7b3793",
+    "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol": "e99c8bff5d7b3c2a8e4c861c7ccb796e9bd105a56afbe16914f53228018e9035",
+    "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "9055c2994b37dea1a41b7b7926dcb510f05dbe2540b0aafc5fbee9558fffd0ca",
+    "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": "d9e1a5cc2e04e5655ab4cc63ef68c1cd5bd6e49f8bb9966fae26653eff7c3987",
+    "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": "1383297308cf3802d54dc724e22325db744d009201d1c3c5c3e89d1571ba311f",
+    "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": "1ed50b1056af886752f0fb48a0165d381e69bb4a4b18b893b066dc144a7e08d7",
+    "lib/openzeppelin-contracts/contracts/utils/structs/Accumulators.sol": "ab7f58adc5094589406064b930a3bbc582a97c66f64b0e9d82400e94f995396f",
+    "lib/openzeppelin-contracts/contracts/utils/structs/BitMaps.sol": "0ac1ed148c044a674dcf0a1b2a271239af70a92cc40bad303318fed5c0fe71f6",
+    "lib/openzeppelin-contracts/contracts/utils/structs/Checkpoints.sol": "4e2c171f2713f765c57bfeff32532cd81adc5d8c8a647433b8084334d7f3834b",
+    "lib/openzeppelin-contracts/contracts/utils/structs/CircularBuffer.sol": "4dbf139944f94efebc1b676229581fd856db34d93579dbda0c122248867025b4",
+    "lib/openzeppelin-contracts/contracts/utils/structs/DoubleEndedQueue.sol": "3f587ff09a00fceadea80d913e3d6309cd72d8d259aaf337cde222d5a11a332f",
+    "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableMap.sol": "b0711b42768b816747be6b4df734850152643d18b202a49891181141384dca66",
+    "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol": "91928d7958e66061c9dee0102e279091ec4ca4feaa297d104f297d1cbd08098d",
+    "lib/openzeppelin-contracts/contracts/utils/structs/Heap.sol": "59ee61740be3c7cdb647c6b00042f6ad3ce60cba8a3f8d4f5f901f9961cb295f",
+    "lib/openzeppelin-contracts/contracts/utils/structs/MerkleTree.sol": "75534c72c458aa6ddd14e07ff757f71729464b1a03119bec7c17b280be853315",
+    "lib/openzeppelin-contracts/contracts/utils/types/Time.sol": "316be9e973cf6130738e391f937b4fe064b37b1b47e312f0221b4d89db1579d3",
+    "lib/openzeppelin-contracts/contracts/vendor/compound/ICompoundTimelock.sol": "9a6bc44d5a5e96a035b14d14f19745dfef040953f6e6903a0aef6b0334d5548b",
+    "lib/openzeppelin-contracts/contracts/vendor/compound/LICENSE": "0ab7979d017af8f12a41128ce15c75b531d99cbc3e988ba0d4c59677651dbfa1",
+    "lib/openzeppelin-contracts/package.json": "d853457fef426729d542151ade67c47c53ed8c0bd877dade47264fc7831aa718",
+    "src/SqueekOdometer.sol": "dc172c87683dc2af819e39d6ca79241aa409cb1e2c74570a6c34ec787658a38a",
+    "src/Types.sol": "817fd3a59075ad12f19e9acff2a6c4b780dc81ec145093731cf59512f2edfd0a",
+    "src/art/OdometerArt.sol": "12976578c2be2e0fea40a644d583977e196f3e5267a4bead80c99309d0d9b076",
+    "src/art/Sprites.sol": "567ea1d6dc4b17d1f9e744f6c07768f396323666ea4a4f880c486790d98f9b82",
+    "src/interfaces/ISqueek.sol": "d9467a57e7911b36d01e3a224f8388558d2a8001b0838fa0e396ab4b71452a1c"
+  },
+  "adapted": {
+    "dist/app.js": {
+      "upstream": "03249ad974f970b328c38411f516ffacbe646f8165d6eafc272f3cc9459e4fac",
+      "why": "review revision: the page shows a token as yours only when ownerOf says so, and finds a bought token through its Transfer log"
+    },
+    "dist/favicon.svg": {
+      "upstream": "6b3118a69f5ccfac52a16875e56bbd02c0b2d4b1b1649358b6dc0c5c6a46d8a1",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/placeholder.svg": {
+      "upstream": "6b3118a69f5ccfac52a16875e56bbd02c0b2d4b1b1649358b6dc0c5c6a46d8a1",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/napping.svg": {
+      "upstream": "b22443f4b9304846d350e3e69931915ed3328f5de05a50da6271d4cd1de9254a",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-0.svg": {
+      "upstream": "1e316509302be43d54050fd89bf57c6d0bcca182d5519dd021dad3c411ba43c8",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-1.svg": {
+      "upstream": "477d27287c3c5d7b0e421412fc872f08e6540ece087924ea58bce15fce9a621c",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-2.svg": {
+      "upstream": "1050c1f7f50335ad50626e722368fb0e2b60f7e144b1fe129957a5609c1a45b6",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-3.svg": {
+      "upstream": "7775190f78abd9c94582b8f6e58f425bccbb784f47e0cff50e57d13f50b28634",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-4.svg": {
+      "upstream": "a52cfaf91e5007d1d59c67e25584fb1efb33bf3a28f1fc5639ce304e0760624a",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-5.svg": {
+      "upstream": "acc57b0192e12afe3ab99484a80679c5cabb63ab10cdc26a644c8e69c6bdc9ed",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "dist/samples/stage-6.svg": {
+      "upstream": "c7e26996db4cd314e08d585d81d37f41d84d2f46bcbb1644e02e34391480e570",
+      "why": "review revision: the ten SVG assets rendered again by the revised art (digits one column to the right)"
+    },
+    "lib/forge-std/src/Base.sol": {
+      "upstream": "608b2a4200d4818f616dd767f0689d3dd26b4c87f5abb1950cc38f3424b6caba",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/Config.sol": {
+      "upstream": "a58e74ad46ee54e9cef51f446f160c6253fde502ce11126c15d4563e5c792934",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/LibVariable.sol": {
+      "upstream": "7c2d2d1a281d9c0b9c4f322abe87882825298d62d0689d9c636d4bef462415dc",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/Script.sol": {
+      "upstream": "1842bb8c8e1516aa9bef2d5c0911ae020f060a8f2b0f99dc2257046e87609911",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdAssertions.sol": {
+      "upstream": "a52d820a775bf1a776542915a83ae181245e8fb12e5db79ac5fc97f505dabc46",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdChains.sol": {
+      "upstream": "2d8b982dc649aa90f4dd28ef22da15f5414022d7df1afacf5ccff3e974921593",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdCheats.sol": {
+      "upstream": "c07d2aadf428cd6f6020aebb9da84d26e6268bebf75f770543d7cce97a356ecb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdConfig.sol": {
+      "upstream": "1c44e0e151156e3ebbd051e108b4ec24511beb26b14499a5b068cd3cc40abba9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdConstants.sol": {
+      "upstream": "572e3c3c4d1f9754e3edc7af5157115235d3ade025a31a9bb4e0429d69602551",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdError.sol": {
+      "upstream": "12cfa17dd3d22d828d05dbb0b49e4b3a4a6c97e1fbabf547ae9776e845bd792e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdInvariant.sol": {
+      "upstream": "8c00d036f507e30f91d70594b80ef6cd98f5e33aa25ff3c95e1348ab77d3d5b2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdJson.sol": {
+      "upstream": "a6f0f1477dd76e101f260f83432c0de16109e8069735f44b72e4a363de5cac75",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdMath.sol": {
+      "upstream": "a3086721195ebd3f799d3557333ed3542e8c672517c1ceedb92ad4b329f120e9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdSecp256k1.sol": {
+      "upstream": "f57f2b28d7dfc5556e7bd0d655842bd10a1503332e76ca409e43af16221b63b5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdStorage.sol": {
+      "upstream": "08329e0a5869863efd6d2731f0107de7c7b702502a56e2001730f3b44d091911",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdStyle.sol": {
+      "upstream": "b2c9d4f17448d3395fbeb4cd5b0472ab19c29ec15377286a88e113779bc2d4c5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdToml.sol": {
+      "upstream": "a881e9d6d9bef4b86c35b59e57d72e8a11f6b1c335ed54d7c385709271a3731a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/StdUtils.sol": {
+      "upstream": "b476be0123c800f6e118db4c4265427b27926c2cc7aaabeef0118e781fc5fa29",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/Test.sol": {
+      "upstream": "b6c17d529fdb02b456ffee45838083caa335d0109d9df75602cc880e633c963a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/Vm.sol": {
+      "upstream": "03ae52854d7edfd654be1a22036c27e3152306378f78d1c0c0e220d14730bda8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/console.sol": {
+      "upstream": "8125f7d9288751c15d4042dd05c275d8a879dd7a074e778977298169c06db39c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/console2.sol": {
+      "upstream": "a675b2d87278d46a787546099c20133fa5ec191f293d33bab103b6edcb0bd74e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC1155.sol": {
+      "upstream": "087d996a0740f62b852cde30951e785b636dd874328f0218b2722155075fc574",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC165.sol": {
+      "upstream": "fd0ec8a846600c82af8c2c461961fc978529c28a58b21f2495dfd3144b6278a8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC20.sol": {
+      "upstream": "0858203cc8704254a8b048d18e4f153b7bbd2f9f7b438a8cdcbec87616b63815",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC4626.sol": {
+      "upstream": "f3a2be2eb9ad5cb1e9af24f6947b16c6df9a0f53c633004d48acc3747e30c004",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC6909.sol": {
+      "upstream": "c0d065eb42360bf81482dadf8ff4997184d9354254ea12f802526016e97ca032",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC721.sol": {
+      "upstream": "7f2567fd2661ccd47329472e766db030ec0766b4271f4807bdfa02aadf58f3d1",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC7540.sol": {
+      "upstream": "95b84f0b15107fda005d204ff9c8e65e8973d5181e5e963051f1d5711488bbcb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IERC7575.sol": {
+      "upstream": "e4f0af7c9ad25db463c48b1952ef35b7de1741f60d64f4d489be6e06e1e25ebb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/interfaces/IMulticall3.sol": {
+      "upstream": "9f6f91c8678ebc879f822911013b3eab7e5afba915f931659102c42c3e8fb98d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/forge-std/src/safeconsole.sol": {
+      "upstream": "22bb9e3835a13ed2be569f035eb26c915275fd886cf58f1cb1d318a229cb5aff",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/AccessControl.sol": {
+      "upstream": "ac89e8a2a041b28c3f67c208fffc88c33c8ffdf7afbe1f8d02a9057cad288278",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": {
+      "upstream": "87663faea573c1c5d69b61118f99a0a1aa7b69a3adf923a173c91295304a30bb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/Ownable.sol": {
+      "upstream": "983f66c555ad42c897f934811283f9295e474b2e16ef95de07b0a6230375bebd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/Ownable2Step.sol": {
+      "upstream": "93d21d347a45e8143f5f752683901901f7ebb720ac64b7d3dfd160a3cb7c2409",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/extensions/AccessControlDefaultAdminRules.sol": {
+      "upstream": "0ba427b61dd0ece095a3938e4eff61c91c01c8077ac331e7233f13cac377513e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/extensions/AccessControlEnumerable.sol": {
+      "upstream": "a04007cba20daa5960c5d5e26219817c7ac5f2bf2cb00999548d73e5e380c12f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlDefaultAdminRules.sol": {
+      "upstream": "621e5ef459ad680b24b0d31b75d9cf6a454ff13810499b819f55b48bab3af8e2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlEnumerable.sol": {
+      "upstream": "1d7af0fb33b1675c467739c04d2027fe4ae62ecc2465f2a0e13b0de6c156cefa",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/AccessManaged.sol": {
+      "upstream": "7ad39dcd3adad2fceaea3c9d6ad23c29cfdb89b12f131f23b98d4ff5c0ed262b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/AccessManager.sol": {
+      "upstream": "75aa7eb828babbfbcdd0403011f163614908761d943ffee06f4dbb9788d35f33",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/AuthorityUtils.sol": {
+      "upstream": "3be6e7bd170464a7eda8324f51f0cde973cb4447cd0824c0beb7d914a1b85d14",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/IAccessManaged.sol": {
+      "upstream": "09c89774030e0bd6281a0529b3518b7c6df455e3d08acb8b7a8b5605330345a0",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/IAccessManager.sol": {
+      "upstream": "7c523fccde74e6ed695cf015697e309bf2772b04cf5e19fdd14010db01eda7d8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/access/manager/IAuthority.sol": {
+      "upstream": "b8723058b152afde65f4d90e0bb744dff39d802060d781395038764a884d097f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/Account.sol": {
+      "upstream": "cf9a01d6c600bff8a445dd893e6bc8312872a2c6c9152232f3bc9eb2b18bc004",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-AccountERC7579.sol": {
+      "upstream": "e9d020050fa60adad2091468001c6ccb784c1ded2c1c8ecb9108fdda0aa47ccf",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-AccountERC7579Hooked.sol": {
+      "upstream": "a6c59b4b6987f16d84ad42b6c97e3a2424a120442fa703551a0beae89b30bcc6",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/extensions/draft-ERC7821.sol": {
+      "upstream": "8de3777cc38d983432cb06f0798c48879289c64aaea2fc97dd4d23d7359339db",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/paymaster/Paymaster.sol": {
+      "upstream": "865f48109a8097778b36f6bb3194f1f566e1c2c21185781f591ccd6b329c2f4f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC20.sol": {
+      "upstream": "f65365db014b911e5a836d18561fd9b4ad9abae469f37d6a38559bf367e81a1e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC20Guarantor.sol": {
+      "upstream": "c9f67b75ce3ac99497dd027763ff3c3c371fa73ccb867213f200bec54b659a8c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterERC721Owner.sol": {
+      "upstream": "5cdfb75cfe271e6a7b14e87aa983c9fe6c8e02b22a55df919d5a105e018f1722",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/paymaster/extensions/PaymasterSigner.sol": {
+      "upstream": "5da825f79261df65ca4839ed6c96d96ead8c0793e8c7ad65dd15d869980f83a1",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/utils/EIP7702Utils.sol": {
+      "upstream": "c604c0d1cb06d65ac31670dbd2300c3d6db261083d62ad8c4fed8173f88d0921",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/utils/ERC4337Utils.sol": {
+      "upstream": "0bd0c48c4fc463fe0a91d9669819bf3842d07f45552dc28adcb19c1c64a5d08a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/account/utils/draft-ERC7579Utils.sol": {
+      "upstream": "49f98265c1bd793ca882b97b7df843d06e3f05babce2561b4f8ce0b64be507fd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/CrosschainLinked.sol": {
+      "upstream": "e4099196804e3096ffef9023d2986e0271fb8e7288108ede3cc022df74ac64dd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/CrosschainRemoteExecutor.sol": {
+      "upstream": "6066ee097c01ee676dc89e8d02d704dfffae33964931046f2d258b691c63f23e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/ERC7786Recipient.sol": {
+      "upstream": "42b90b731c605fc0168900f7ce1941a3a15b4090b568d9933617dc174767d43f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC1155.sol": {
+      "upstream": "428587bce43ed575adaf4bf8d4ecbdc957b52ba59f1ff1c5bf540efeea98ba5c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC20.sol": {
+      "upstream": "00a08b021a333c94309c34e93d51ee1811411122e96df727a4c316220282a70d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC721.sol": {
+      "upstream": "b787c5018ab527ee5a97256c87dec1b6e258469be0c88e280bfcc751f1f1dbfb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/BridgeERC7802.sol": {
+      "upstream": "fde5d0cf9a126ef94eecce26dc57d5c9a173e84108a1148bc9c4c324bf4e775a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeFungible.sol": {
+      "upstream": "abf8af4d1b088ad23754a54f831e3e33594e495788f3df8111406fb7135fc96f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeMultiToken.sol": {
+      "upstream": "f66fe529a9910669de3469bde06547b0aae68e46aea36a4e7f77af2b0ac6a4c5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/crosschain/bridges/abstract/BridgeNonFungible.sol": {
+      "upstream": "996c207cd3f890a7354fe4d4d31b258b21b9d3d95de6a97fd4034f6d2aaab44b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/finance/VestingWallet.sol": {
+      "upstream": "cd4e9695f7077bda1e6aad289a2dac2f0ad2361d402266e630624ac4534735ac",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/finance/VestingWalletCliff.sol": {
+      "upstream": "482d16d36502e73490030c305b29ef352396f4765fcc4ea8e9bbbbcc7489409c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/Governor.sol": {
+      "upstream": "62878d4508a87590ec64060c9d4b17983f1286bce1838f4d619663eff556b8ee",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/IGovernor.sol": {
+      "upstream": "562f0eb9da07b98e22a2745823394a3ea836cd069056711ab5e04362729081a7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/TimelockController.sol": {
+      "upstream": "8e959efcf586bfe71f11b7265c24b29ebca7de6350068c95c82c24de55b10b50",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingFractional.sol": {
+      "upstream": "f30065fcbb4ddff8824edf8210c1de9f789289f840c08f3a1a0145782caeb995",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingOverridable.sol": {
+      "upstream": "e3a7f06c61135e863417d241b675dd103b2518bbcfd04e3ef2aeca4483cf1fe0",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingSimple.sol": {
+      "upstream": "e703a1e8752e2a75ad20b982d1ab785eebe9e5ed417280f2c6fc6a8eea8a7a3b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCrosschain.sol": {
+      "upstream": "556c356631f96a6e560a9e38dfe2a8ffee08f3e5566f04a105cf7903f0e97fe5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorNoncesKeyed.sol": {
+      "upstream": "2fac28017bcf866de6151e1f2279d560e563f13abcd66ff421c21e07174b3e76",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorPreventLateQuorum.sol": {
+      "upstream": "2bc6034cbb808863711d6be5d94f26e6c6f70d9d854bc69d0f4c7a9a13ca6ddf",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorProposalGuardian.sol": {
+      "upstream": "b30252c55118723693357e42eb2f6470e7a7ac0f68e8bd8843b272223ecd250c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSequentialProposalId.sol": {
+      "upstream": "8bb0ef5a0552a2ac9034833948be3fd3118cfb7b9497d0ff1a6fc57110755f01",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSettings.sol": {
+      "upstream": "1b3daccd706d16d23ac483d4e46e456cbf6ec298b7fb3ce699973a04c7ff512f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorStorage.sol": {
+      "upstream": "4b13a37014ef895dcdf3a6e8554ee3149012c84fe741146caab190e7c9a68c42",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSuperQuorum.sol": {
+      "upstream": "3ca1e2fab0c54f1ed4201eb19d2a94e79fb2ded5320eff3146b2b09e28efecd9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockAccess.sol": {
+      "upstream": "ce1d6ae98dd72a14d0af683aeb7e9bb977d59c8bf82e76295d60557c699815f5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockCompound.sol": {
+      "upstream": "4056ac47cb4393c6075188827c012d10da32a3dd3209bc9de045a1ffe7ce67c2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockControl.sol": {
+      "upstream": "e0912c7afd08563a2fd8f67b3119526cf6b32cad58e9d978c3e94c0f903fdda5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotes.sol": {
+      "upstream": "66809dc75c004f6df096bf68d4eb5784edb2fb9bcce91280ec730ff8ab8bd871",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
+      "upstream": "ac72af20e5a9741929366508ba92d254fda256cc67aa5297a9474e7324f47506",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotesSuperQuorumFraction.sol": {
+      "upstream": "11675ba2c56be7c24ab0621e984744408851d947613aed8d6dc70d511e30edd6",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/utils/IVotes.sol": {
+      "upstream": "3e9b7b269ab1fa58079adaab324b46fa58cd7a651eb249228ab3f2b8051ac866",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/utils/Votes.sol": {
+      "upstream": "bf4b40db4baff48d2b66d9e8ec6dbfaccf31251314e4c6648a59b9bf1971b2d2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/governance/utils/VotesExtended.sol": {
+      "upstream": "182b7afc2ff36abc814f2c45e815285bba853e336033b72ae7143f813d38a2fd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155.sol": {
+      "upstream": "037f05e626213ca734da916b63e0520edd26cff74834254ebee56731241aa2bc",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155MetadataURI.sol": {
+      "upstream": "b5661af0f5ee9fa53e751c8f675f5c7f8e5bb44c0013cb0bda4873ebd8796a86",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1155Receiver.sol": {
+      "upstream": "f4e0fdb62d4ab2e78ca6db68b8d2ba63df4c6dff3f9aa4ca5d141e05f8971474",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol": {
+      "upstream": "8eec03bec7ead7ebb1764d5ab14fcac00595f112506f0ff975e2b82e0fc241d1",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": {
+      "upstream": "e50076f76fc3383d41939755d0b2e0aa67b3aa240478775459d4248f3e59c619",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363Receiver.sol": {
+      "upstream": "cccef8610982d564f03dbf20b290276dcbd870d55a8d9617bcab5215c90a9755",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1363Spender.sol": {
+      "upstream": "5d6a08863829c60185f7cb09020af3cae8663b08316c3a8c41919f633818c8e4",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": {
+      "upstream": "50737d8441ba2583b41c79118591e8bf5eef912923973ca2ecf989e2f7b435ab",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1820Implementer.sol": {
+      "upstream": "8c94be0b3aca4ca9446094f716a9f6280423039c05442885ffa3d1845f5847f9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1820Registry.sol": {
+      "upstream": "07d270db21e2d4e5eb236209a22e6f6fcabf5fa8be4024cd7428774d9aca3f3c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC1967.sol": {
+      "upstream": "f7fcbde1c75c62420d346c90c83842031605c369148515a66543ef905300cc26",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": {
+      "upstream": "7984ca1e9c81f5ab188a00b3a102e5a249c55021fe2d4fae032e3674dae880ea",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC20Metadata.sol": {
+      "upstream": "53aaa7455c7598781ef25546e0210157b674afd63fe9233437abf6c7b3b7f83a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2309.sol": {
+      "upstream": "89fe2064e7c2cf23781d95c7db75d7352af5f09e016bee08ce4fbb9a78890bbd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2612.sol": {
+      "upstream": "1237d3ec2e0a792f17c6e97aaa59e64e73613fff93addf91942301416c0a5e9a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC2981.sol": {
+      "upstream": "ef93db3cd697a4f2bfd65f78682220b6c6a0d10a42e3dd8924cfa42e65b5cdd7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156.sol": {
+      "upstream": "95c119477225b2ece3c824afa79c87ff74d865a44c8c6e2ac1e285f8ed525329",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156FlashBorrower.sol": {
+      "upstream": "c98d3215dbecd16cdae5bb68bad886d4b90658a2b32e25f9a4dc76fb80b403b4",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC3156FlashLender.sol": {
+      "upstream": "f0fbeed3d2cb6aa9bc66f6b5fc7322e9fe52e78973b0e13a0be294224850dc21",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4337.sol": {
+      "upstream": "7c2783403673ae4a6ccbb08bc2e458a8f4eda8e0dc5d48c6038d80df8fcdcb27",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4626.sol": {
+      "upstream": "34af99c2b379495aa2d7b7157dc490f19c011a5034010cf6d0c70788c48ce2e8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC4906.sol": {
+      "upstream": "1484da40f595cad137a633fb6bce8ba74eaa4195a075a265540602a659b1ac23",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol": {
+      "upstream": "59faab8ec1bdf233dfb0b01f3e1f66f35e0b3cec0963c909958fc1609c8020a0",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5313.sol": {
+      "upstream": "cd98282003a63611c2264d972823957ea3654f0ed479d7bb1217c24051ed97cc",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC5805.sol": {
+      "upstream": "3ea659eb098b0bb3979ec18ecca4c505f0e7a8d8385b6ef39a408828a4394e73",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6093.sol": {
+      "upstream": "f7f804bbdd7184e854467b1474441081ca8c3508af7c991eb688f21e756b137c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6372.sol": {
+      "upstream": "86d45d1726e8302ce2d389d16954814e43a0492e391d54028072b1fd4ef77ec7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC6909.sol": {
+      "upstream": "2992d22d893b707c7f223fda866ae7441f064a80b3b9d787f6a021f7a2f6cd70",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721.sol": {
+      "upstream": "adf27d9e3194d374dca0b0a8e64686117f15268c99422ba9e56235568f778fcb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Enumerable.sol": {
+      "upstream": "26eb213820b4ac2348fa3ddfbbed489a465ba9d8267fba4f0704bb3302397b68",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Metadata.sol": {
+      "upstream": "523c4dd588a4a9ef5d380c2fadc18237c0caac427bb4c39d09d43c262590aedd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC721Receiver.sol": {
+      "upstream": "e0233c285c49e13d35fcd87bf062bee5f79912ea02d32e840399d923f4acd74a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7751.sol": {
+      "upstream": "1f09bdf5734c11e8d07b17f7676b836572adec740f2b616e1c0cc27747c0fcdb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777.sol": {
+      "upstream": "3c70ca295ac4211369217b2221a8451bb309d048b9afc28b1cb5169a30cabb5d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777Recipient.sol": {
+      "upstream": "aa9e804c9d30af672d9a67acd471f0b910aea2f356864d06b3e118d1f1624919",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC777Sender.sol": {
+      "upstream": "3d455e31e7267ffed6376ff105c0a7c5127c51ed4657ebb5ea1f20cd5cda7808",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7786.sol": {
+      "upstream": "1e13e3aaf4b7ac4d1f93abfa1a14a60fbdd7293e0327ec09765bf2369beedf1b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/IERC7913.sol": {
+      "upstream": "e156247d303391acbd16d8118dcba9dc2825111eb4899545b9630bd54730f021",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC1822.sol": {
+      "upstream": "683c503a7fe3f4e816fc09a92808c089655396114ebe367cb9a99a6ee165ee11",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC3009.sol": {
+      "upstream": "a679d218f852154fdf246e28d02b522d98aa65ee0c62adee4581bcff4fd14d36",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7579.sol": {
+      "upstream": "5a7376c7c87e14feedf889a3090f265f49cdb80f1638ebb95ddb041a1c5ec790",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7674.sol": {
+      "upstream": "64bd95bd46edbfcc106b61a598bd6c68643df723619cd56a5ba95a33cb3fad88",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7802.sol": {
+      "upstream": "0985f9535b80ae3ac43c4937f804f6026d7d84021f89b8e69bdbd2819204ed95",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/interfaces/draft-IERC7821.sol": {
+      "upstream": "5b3bc86d044283de1585c7da3e64adab6d9556e49749a559031c3203da98393d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/metatx/ERC2771Context.sol": {
+      "upstream": "6f95cf08cba20bd0010bdb712aa47ecd7cf5250cef149443f0e6d63a51111552",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/metatx/ERC2771Forwarder.sol": {
+      "upstream": "73ace1c236d2759984a4f1ca2c8d97bfbcee7755e078766ad7acf88cb4a35632",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/Clones.sol": {
+      "upstream": "34cdbc266251b89e5702f6baccf4291a7615f26954934951140f92b0a13b765b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Clones.sol": {
+      "upstream": "51aac4f640b46d8847bc43c1308457a120ca3cb8894629747f329e31aed21a7a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
+      "upstream": "106289e7ce60bf629b32d7c06e9bf08eaf6bba4d619def2b080adff0ec2f4b7a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Utils.sol": {
+      "upstream": "08df2e271ddaaece8e84ce57b30556e35b598fae7e1f290a90f8824e19464d24",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/Proxy.sol": {
+      "upstream": "566330e99f7944eb667ef8955776f5eea61ab445856e12a5b49106d49fb38c4f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/BeaconProxy.sol": {
+      "upstream": "76b78d67ca53c97ee04560bf524710373095ff8d1320f6dc7839de9bb15ab4e0",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/IBeacon.sol": {
+      "upstream": "712cf38945ae766ca3f63206c3b1e17f7d8fefe9a2f5d839b91c11b0d80cb81c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/beacon/UpgradeableBeacon.sol": {
+      "upstream": "75198bbf47842420deba47ad132534dc858ed043fb7f92321f5e9f6766e0f67f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/transparent/ProxyAdmin.sol": {
+      "upstream": "4afeebf8e17b73491c5adc6c3ddec5a1d9e5b7a39e707a39e8ec4f1074cf4436",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
+      "upstream": "ac1254368812ad4bfc91e3fea8d7a81da8f36b5830abcf288867955fcb9a4bdb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol": {
+      "upstream": "b7fac6b963f075f5270df93c9f03da3b1d9ba936972e8887c23596f40d705630",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/proxy/utils/UUPSUpgradeable.sol": {
+      "upstream": "13238396f84c57bceea3ad12319f543a64d53513138f67bd574a02d341026118",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/ERC1155.sol": {
+      "upstream": "e0dab32f2bbbee62ca7def7916788fa3e187faf1b1a32b083418f5ada368db65",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155.sol": {
+      "upstream": "dd2e62d89e41821f438d1af906ebde3de9f16014a28b07ca3a27b1aceaa1c289",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155Receiver.sol": {
+      "upstream": "9d0ebfaeac3a1063e0af9ff51ff4d45c7545bd8201c61ab9d71c8441855555ff",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Burnable.sol": {
+      "upstream": "053b7592327fe5daa9db7fc8360a08cc7268b48e07dc861f43a288911387fc8e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Crosschain.sol": {
+      "upstream": "fa2c1d5d50e828ff3de941e62f4a60585fa9e37da3df39e91743f4372b5805f5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Pausable.sol": {
+      "upstream": "52d2320655045a890c835093350ebdee7f704fb0326b24a97bb3b208f7632292",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
+      "upstream": "f372f3eba4a005d37c5568b54f00ff0a9d625cc545a28c34e8416c8d255c752b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/ERC1155URIStorage.sol": {
+      "upstream": "d86b8ccba50714aae56c107245ca7be20c68c068ed7736c0e2cd7e642098197b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol": {
+      "upstream": "5c0d05a3ecab28587de9ce63b9c5521b96416d36947f2b65e26182f9e933413d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/utils/ERC1155Holder.sol": {
+      "upstream": "3ad6abae2100893f2c4ed6a2321227834ba92f01f49dc915f330eaf92ee64044",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC1155/utils/ERC1155Utils.sol": {
+      "upstream": "484efd20ee787046fd3a5656758a5fddd035dfa194920c34cae6e89fc8483e1d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/ERC20.sol": {
+      "upstream": "f6a68235fc8f48d14b091cda225d6e8e3497f49a46f0159cd18ddfc14d0fa085",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": {
+      "upstream": "c88183106683ce7dc24449994ab64fc525e45d0efb8f969159c27f7f7dc19341",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC1363.sol": {
+      "upstream": "6a494b1f4eb5941546bb19d8de3f96e3473e2546d109a7fea4bcb0c248dfc12c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol": {
+      "upstream": "e34d59eb482c44cc47568f8e0d9cb8ad9f6cd06edbd2f81e21ccd6643e2ff748",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Capped.sol": {
+      "upstream": "f60b143a628cdc24a12efcf073d0b97c8886fe1bbf584989c36824628580ceff",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Crosschain.sol": {
+      "upstream": "47357ae131dcab17132c350965a113351e0a6cbbe72ea8ef30ec3cae81ea31e9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20FlashMint.sol": {
+      "upstream": "2637a79e979e2d9863fb59e75193cd5c52abd5d8d26d08a8331fb8bce86e47ef",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Pausable.sol": {
+      "upstream": "ef5f1eb3c24ed898f055a1252b678b427f337c786ba76518a0db8ef5c0277723",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Permit.sol": {
+      "upstream": "58f4e64de64f4760f521abd86e5482c1a4b8103061eaa8b1e743bb18e20b9aa8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20TransferAuthorization.sol": {
+      "upstream": "f454e85372eafa385c4967bbe7ba6e72e15254a4bbbc56917bdb942d0af07e97",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Votes.sol": {
+      "upstream": "38c48a1cc716adce403e46a3af76f4412a19d3523c3e7abcbd94c1da7ff36ad8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Wrapper.sol": {
+      "upstream": "3d2f1a0a7186ac188950db276fcac50f26bae3c3c1ed80a48d2b479e12336e4c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC4626.sol": {
+      "upstream": "0dd0567d537d9e019bc20ba5e3363e12c8914f183488c8f0a0d6822c69fa920b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+      "upstream": "a1ec1fe630f0a2972c11ed94485d84c021e1b717ab78c9b3238a6a34ca6b6fa8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol": {
+      "upstream": "05fb040f868a08e94b029a8900dfc279a871a02c546956a51152b13b2ddf1ee9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC20Bridgeable.sol": {
+      "upstream": "6107df2370600c73a436c90d9b1b3f956b308739c8f19a31ce014b3687a6bf03",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC20TemporaryApproval.sol": {
+      "upstream": "31aaa28bd93f15cbdd2184941a8903458e0809f5e4a93b5765295fb376211b4c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/draft-ERC3009.sol": {
+      "upstream": "8270b33afeaf2c94c2d061c24e9f0194444e29b47268847fea85922de7ec77c3",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/utils/ERC1363Utils.sol": {
+      "upstream": "509c8be896ce03154dffbe256f10dc38f7c2481d19a776154e04b24eca570817",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": {
+      "upstream": "220d850c02f8516c3c059af0641f7a66c0c1bbaa826dbb1efe3e201a583bca7b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/ERC6909.sol": {
+      "upstream": "212f24dbc5c929c1ea905fdbd8c77109acaeda93c66a2ec0d49ddc212196ded7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909ContentURI.sol": {
+      "upstream": "538a6c0d162769d14dc9a71707f3a3fdd28320831443a9f3540d5308c2e6e35f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909Metadata.sol": {
+      "upstream": "6d07855a001ef17783f3b180f6c844a6f4e60df961b930760b7ee4cd2d8a45fa",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC6909/extensions/ERC6909TokenSupply.sol": {
+      "upstream": "67ed15b6340450d4a9e6b4f19e3b489dfeea06c4eb6eba8f56445e405b05b524",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol": {
+      "upstream": "a6a6f63222ee2717ad98e3b36c2b3f5331e27db05ec1389a0fbd565f154be448",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721.sol": {
+      "upstream": "71edafa201e17c88e1f26bab48b77f44d167cc4978e118d5e997deb4422f27d1",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol": {
+      "upstream": "38bc286e04fc9cd2df8fdb0604ead93a9eee966843094c09b369879c45a4c141",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Burnable.sol": {
+      "upstream": "a78723621fa7c563bebc0305e4f826261e365674a2a396e88cab8df772459990",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Consecutive.sol": {
+      "upstream": "a611f937b84d26c2501d179476f2c345641114972c606aeacbc1a7f4803a07e5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Crosschain.sol": {
+      "upstream": "773295e20a0ac5103b7eeef0ae98594acb7a21fa520eaa6cc1a6d6ed512a9e2a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
+      "upstream": "978b0b5efb80ea9fa2def4959224d65fbe9783d78a8a674a0f43d043cede38b4",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Pausable.sol": {
+      "upstream": "ee3a4c74750ab7a5b8760ae1c240ff03debfc82c07440abe4fc251a44f3e5db2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Royalty.sol": {
+      "upstream": "31629e269417c92735e097e10e8831731684ffa2acb75ddfeff9cb15f99f3a58",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
+      "upstream": "3d3979a83d58677c3cfd96fe9cdc90f44d61e8decb812937856fd62074a5d072",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Votes.sol": {
+      "upstream": "724b55bbc3c8517b27d2d14ab9d57584cbaf1094a8ac74be24ee9da3f99a6910",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Wrapper.sol": {
+      "upstream": "e5f495003493d79009119b966c2a1ea42cdc50b2733558d2073ac2e570cbb025",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
+      "upstream": "78da78be88174a6ed9371585f3367f645e6cd2fa5e309a26271065f4b9ff1f56",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
+      "upstream": "6ba46f5f96aef999d64ac2f5337cf3ddf7cddbfc66f6a187e1ab30b18843f6db",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Holder.sol": {
+      "upstream": "604070732b4726f6ad191c3b0174b311586316435c42b4625b423a93d5e61349",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Utils.sol": {
+      "upstream": "2ae97741b3f7cccaf06128ec540093baadca626fe2fdc330f7fb7b68bcfefb92",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/token/common/ERC2981.sol": {
+      "upstream": "f4f4c8609460a9a6c0fa14160e39fd57dd7ad2991c6bca139f4e87709398d8a8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Address.sol": {
+      "upstream": "19949d8cee0c2f8ca0815bc0f357952755e7e23527d1a11d083e60104c53ec34",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Arrays.sol": {
+      "upstream": "94614d06d1be592837d07181f47097e91d22567fc62fbb2b959bfcd7db68f788",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Base58.sol": {
+      "upstream": "30a3fc96e1d5e3f05b39fde431f8a1113cbdd969550b77080958912e15444094",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Base64.sol": {
+      "upstream": "5c2958da9728f4ff51df1488b2256f30dec2d2cc35fefc0147332debbf37359d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/BlockHeader.sol": {
+      "upstream": "1d58e1582f84f69325a7b8a3c0346973adb98235f8c9dc860cd45db8b1226fc7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Blockhash.sol": {
+      "upstream": "1d3d7eb78fe1e85511593d000509e95d4dff98d4cc695d57bdb1611d72771e53",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Bytes.sol": {
+      "upstream": "c946b7bb46718b13317c0c85ca3f22381de69d0c2b5ab615aac6f6cbe7833aa3",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/CAIP10.sol": {
+      "upstream": "37b4f7ae21bbedcd9e8837d57a55a8366d47492cd7d839ccc0eb6d74fa52ff97",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/CAIP2.sol": {
+      "upstream": "5adec8f84c19bf788fbc5641a03684479aa0917125bd3e91c1c1151d64da7edb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Calldata.sol": {
+      "upstream": "d58f662d226dd14b9dca5cb9ce7d3349c0a0729c8595a2e4d3e900aabf04ce61",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Comparators.sol": {
+      "upstream": "c3e3f31cceea55d4b29dfabb70475d1a4347f04c88ba4bd1b1be631112a1fb9d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Context.sol": {
+      "upstream": "1d2f9cd76e0e0179dd8522aae8d0774b05d9a1902555ff5704ffa5e229047798",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Create2.sol": {
+      "upstream": "28c0afd36e35ab4311e91bc3e12a9c159b01349e7cd193efb9c698c15ccac6cf",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Create3.sol": {
+      "upstream": "1fd0c946bd74945a319ed3d85fe82d1cd954a0c3200bb2880d7f9d9186c14457",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/ERC6372Utils.sol": {
+      "upstream": "d69109eea361eea66c2c27f3a7b6adabf6fb42a7df2a087ddacb539c892d8277",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Errors.sol": {
+      "upstream": "383603712e40c122322647fe6d86457c7fc9c709a92d3765614e047bd3ac6f42",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/LowLevelCall.sol": {
+      "upstream": "d8090da680daa58895217d733442bc020d2123b9fa4c1e5a3923e259ff50345f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Memory.sol": {
+      "upstream": "a26abef0e471955c79db15cbf4604c1d5e49911a54d11d4a1e68853586c845a5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Multicall.sol": {
+      "upstream": "67a852dab80790be5f2ebe4559855cde5a44a95a43f358585bb3e6b866435c14",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Nonces.sol": {
+      "upstream": "82551adaef95694a935495cc3f5ffb697d43416f8a3f7c4662f087a91da99ed2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/NoncesKeyed.sol": {
+      "upstream": "28e99709ac8657ff94163df659cafeeaab5b41c68ea1fbc17fd88bd2d055dd87",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Packing.sol": {
+      "upstream": "bef1786b852e021ce1bc0dab3441dad5a45b0644198e714a0b3e7532887e413a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Panic.sol": {
+      "upstream": "c23b2047b51054dd135798a956b0c794d426a04214b628724c10076c98d4d17d",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Pausable.sol": {
+      "upstream": "019ff3a87a6020cea4de6ae682beffc11ad7d05e9b34a4df843ed731d839c2d5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/RLP.sol": {
+      "upstream": "16c485d933788346bcd3dbab06b29a95b415810e44837b23e94db82782a352aa",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/RateLimiter.sol": {
+      "upstream": "a58bd3be84986800615b0e888018299e8d1506377176bf3aad559278a7ee7e09",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol": {
+      "upstream": "d41db68fc45a3a65a2f695e71436907d5a8edcd5261ee1a9d7be2161fdb8a1cd",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol": {
+      "upstream": "c99ee36c84aee2a139e3e6ec64896c845f891691fe3c2a6370839cdb12b647a7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/RelayedCall.sol": {
+      "upstream": "dd4d1acd3c319db74b9aa4f55aa74fa025b118ba6d2580d9749be4f6dbe25141",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/ShortStrings.sol": {
+      "upstream": "6e45db74884d28439ac2f2e9cb9e57e7fd0ce661626767fa6cb7239d06cc5761",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/SimulateCall.sol": {
+      "upstream": "276dfbf59338a677d3d6f1ce250a8b5195d0e66c50ac3db0a8bcd3904a7b20b9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/SlotDerivation.sol": {
+      "upstream": "48423c8f66c46c3552a921677faecab68c665509e197f7cf3abf93638ab08bef",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol": {
+      "upstream": "acdd247514f17642da6f81657b095fa08ca8e31960a814d84ed176c9f060e888",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/Strings.sol": {
+      "upstream": "675f621b4d0b49b53c6c6622cb77e3f8c26cb258eb2202b56c0ea48ce91df5c7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/TransientSlot.sol": {
+      "upstream": "cc31e8a4aaf998e0d98e9f2f48042cd96909bf2e99bed8d14b5fdd756a1e8296",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol": {
+      "upstream": "f0fe87d5d1ddf88ab5348bf12664eddd06e00d53b1a3659420832c00fc1a6bd5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol": {
+      "upstream": "9c402aa8744e840448fa020df37fe9aee8acd5cdac8df2f110208dbea73428de",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/Hashes.sol": {
+      "upstream": "c54eb9e13970035e8b34e64843e297048b38847cdf65057dd8dde3a322173c26",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/MerkleProof.sol": {
+      "upstream": "49e87141c11cee07cfa6ed520e0ad1f7a3726a189c8253320cbee83f915c71f5",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol": {
+      "upstream": "e3fee9a3da4c5983a4541487c3bc77e39ba1fbb5eac660cc79a205f227a593d2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/P256.sol": {
+      "upstream": "58798212a02a4405772672124575c19cee5af072911754303804c68039e0cfda",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/RSA.sol": {
+      "upstream": "7fd30c77b55dba109d936f059631777b463f9e239c52eb143c5bdc3f6cf701b1",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/SignatureChecker.sol": {
+      "upstream": "604212ed948ee519296fcf2909c67548fb60258d3626ddcd87391a29ff002e9b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/TrieProof.sol": {
+      "upstream": "31b80aad1ae89ceb60d45954f7ad39e6c8dc948d0d8822780e65a7392bf8d373",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/WebAuthn.sol": {
+      "upstream": "572580b360c80dcb081f6c84f7076e3585fa5a890df885d7d293a9cd19f73696",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/draft-ERC7739Utils.sol": {
+      "upstream": "fc0e61c206399ba50eacc4e475301d5901ff3301765656b90e6f3dd49d2e8274",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/AbstractSigner.sol": {
+      "upstream": "ec1e83faa92dc0f3039adae3da3749e591536c40fd7dd513c1fec378036591d8",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/MultiSignerERC7913.sol": {
+      "upstream": "c56392bac50bfb299faa92399f4cda58c88c5a189e2209a4ffd49c66767b7a08",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/MultiSignerERC7913Weighted.sol": {
+      "upstream": "16bdc7d81a8fc7110769471d183689b0e615523e1a11d678d9691f962086700b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerECDSA.sol": {
+      "upstream": "e043bd2b6a31b2b4abdc3f7c15e68fb1823ec41b5d129b4321c8723f8ceded0a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerEIP7702.sol": {
+      "upstream": "dc492ef6f6a9c36007efbaf522172ab6a95b0be4ded791678138169e6771426f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerERC7913.sol": {
+      "upstream": "41066cf5974d454be5ca0f43dd7481c4b7d87c5a52a23386c3278ed2a8f8a55a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerP256.sol": {
+      "upstream": "e5f55053b31ec39e187bd6a0a4b042839101fa1c4974422bb27b555355572f26",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerRSA.sol": {
+      "upstream": "d972d19afaa2f021f1e47a2efb53bf628ced222155722f5d9812e7609dce2b60",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/SignerWebAuthn.sol": {
+      "upstream": "ed99801ff2ba6d8bdf0ff547130d7a6ab793162fa167cdacf5e167b5fd276d7e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/signers/draft-ERC7739.sol": {
+      "upstream": "b4e2906aca5a1978166924bbaeefe089950f75c3ce860478062f3c6d338a2a15",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913P256Verifier.sol": {
+      "upstream": "f8715d9dbed0b38dc858db842b4bb287fbcb31d284218a73276125e791ccdf1e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913RSAVerifier.sol": {
+      "upstream": "6693e0a60e90c07c295b21966709f4ddef09280bee7bc4fd8ce5071c9643d7bc",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/cryptography/verifiers/ERC7913WebAuthnVerifier.sol": {
+      "upstream": "2553b80b396f972121502c0374ae3d6cf249cacae0c8cc57152929763be415b2",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/draft-InteroperableAddress.sol": {
+      "upstream": "dec18feb27c2e59c258c416ff18216a5143bab447630d8aaad4f5ccec30aff4c",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": {
+      "upstream": "aaecc0e2d1ff1fa9f87dfe1b71a625f711ff781be431c1662aab44ac8aa7b6a7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol": {
+      "upstream": "6f77839967f919ef733d80ba0286cc06b50861f037bc71a0dfe23b499060678e",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": {
+      "upstream": "ea549ecb4a958b2a6e8d431b9bb4a6ffcbbbfc3affa4269369bda525fd63dcfb",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/math/Math.sol": {
+      "upstream": "95083ea0301c36f0d3dfc12c8c8a9a575834ea6b30239923c0c142a8f5689c67",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": {
+      "upstream": "995ec453daafa6b6e653bd3026bca1ac32724cd656c4543c0b2b5eb5e7ed3cad",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": {
+      "upstream": "a74bead11c92a444806cc33e64c3e77c946aef4e8780b04dbc57cd495a34ef3f",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/Accumulators.sol": {
+      "upstream": "5b72a1b10490221c9fae3503db31b95e046764e94784a40f58c09f4afd69516b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/BitMaps.sol": {
+      "upstream": "51b563dd71f30733aa84a18ee2bd210e087c1cfd0e9068a1031b189f99a85e6b",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/Checkpoints.sol": {
+      "upstream": "58b84297654a17761c8702f314075252efdd8b8e00e82edbac7560fb4d488961",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/CircularBuffer.sol": {
+      "upstream": "aea3179238b005e56312a4855537397451942e3103682f28fd8e19dce02da1c3",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/DoubleEndedQueue.sol": {
+      "upstream": "54a720524e5e038ad203e56cc6464865343de9ac54f54aba693921282de6c214",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableMap.sol": {
+      "upstream": "17661ee6e54ae6465de5a09436dfaee162454ca975c3d46ff7e8ee69e0cb3f12",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol": {
+      "upstream": "507666d6d9d5015dfc37e6cea04f1b0a8cc5c1d498f7e08a18a9eb4ef0fcd4c7",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/Heap.sol": {
+      "upstream": "022abac770013f7d36223e847f244d46b0503fa12c2a4df85c4739656ac85b04",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/structs/MerkleTree.sol": {
+      "upstream": "dcafb7301d52ed87c1ddd60e7e9081b7930935bb8f16d6286d83fb9543359405",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/utils/types/Time.sol": {
+      "upstream": "c5328901151525132fd08d870063930be3b062bda2bbefc06ad1abd477e387a9",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "lib/openzeppelin-contracts/contracts/vendor/compound/ICompoundTimelock.sol": {
+      "upstream": "2cdb520e0d8d934202922264cdf072146d6ae6887aeb12ee8188198fe711b21a",
+      "why": "reformatted by forge fmt during the adaptation; the compiled artefacts are unchanged"
+    },
+    "src/SqueekOdometer.sol": {
+      "upstream": "82388009b88a17d63cbcec7ff4a1cb7a9eb63f62a678a3859dcff3fa1b3e3485",
+      "why": "review revision: chain guard removed (the launch rehearses the constructor on another chain), copied words range-checked against their uint64 fields, non-canonical mint baseline refused"
+    },
+    "src/art/OdometerArt.sol": {
+      "upstream": "76ff1bdba252d72e8cf3e7b40985e3edd985158b45a95cc3fa5a16242928f1ba",
+      "why": "review revision: the screen pegs at 99,999 km instead of underflowing its origin, and the digits start one column later so they stay on the screen"
+    }
+  },
+  "upstreamFiles": {
     "dist/app.js": "03249ad974f970b328c38411f516ffacbe646f8165d6eafc272f3cc9459e4fac",
     "dist/config.js": "b19111b551345c287fe7329905fb921be0956385f06433de0c0e63cb9a93238b",
     "dist/favicon.svg": "6b3118a69f5ccfac52a16875e56bbd02c0b2d4b1b1649358b6dc0c5c6a46d8a1",

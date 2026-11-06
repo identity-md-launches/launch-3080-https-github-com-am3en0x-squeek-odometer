@@ -24,6 +24,8 @@ contract SqueekOdometer is ERC721 {
     uint8 public constant UNKNOWN = 3;
     /// @dev Gas each read of a Squeekchain contract may use: a broken or hostile dependency can only fail its read.
     uint256 internal constant READ_GAS = 500_000;
+    /// @dev The ABI offset a static call returning one dynamic struct starts with.
+    uint256 internal constant HEAD = 0x20;
 
     ISqueekCore public immutable core;
     ISqueekNFT public immutable squeeks;
@@ -44,11 +46,10 @@ contract SqueekOdometer is ERC721 {
     error AlreadyMinted();
     error SoldOut();
     error CoreUnreadable();
-    error WrongChain();
 
+    /// @dev No external calls and no chain check: the launch rehearses this constructor on an empty chain whose id is
+    /// not Sepolia's, and it must deploy there. The Sepolia binding is the three addresses, not the chain id.
     constructor(address core_, address squeeks_, address staking_) ERC721("Squeek Odometer", "ODOMETER") {
-        // Sepolia only (31337: local tests); no external calls here, so a deploy rehearsal on an empty chain works
-        if (block.chainid != 11155111 && block.chainid != 31337) revert WrongChain();
         core = ISqueekCore(core_);
         squeeks = ISqueekNFT(squeeks_);
         staking = ISqueekStaking(staking_);
@@ -59,8 +60,9 @@ contract SqueekOdometer is ERC721 {
         if (idOf[msg.sender] != 0) revert AlreadyMinted();
         if (totalMinted >= MAX_SUPPLY) revert SoldOut();
         (bool ok, uint256[8] memory s) = _read(address(core), abi.encodeCall(ISqueekCore.state, ()), 2);
-        // a token must start from a real reading
-        if (!ok) revert CoreUnreadable();
+        // a token must start from a real reading: both words are uint64 in CoreState, and a baseline no canonical
+        // reading could ever exceed would freeze the token at 0 for good (there is no owner to correct it)
+        if (!ok || !_fits64(s[0]) || !_fits64(s[1])) revert CoreUnreadable();
         id = ++totalMinted;
         idOf[msg.sender] = id;
         startWork[id] = s[1];
@@ -79,9 +81,11 @@ contract SqueekOdometer is ERC721 {
         r.display = OdometerArt.displayOf(h % 100);
         r.casing = OdometerArt.casingOf((h >> 64) % 100);
         r.pouch = OdometerArt.pouchOf((h >> 128) % 100);
-        // CoreState is static: settledThroughRound, cumulativeWork, cumulativeBlockUnits, blockHeight, ...
+        // CoreState is static: settledThroughRound, cumulativeWork, cumulativeBlockUnits, blockHeight, ... A word
+        // outside the uint64 its field declares is not a reading (an upgraded or hostile core), so it fails like a
+        // revert would, and the metadata degrades to unknown instead of overflowing.
         (bool ok, uint256[8] memory s) = _read(address(core), abi.encodeCall(ISqueekCore.state, ()), 4);
-        if (ok) {
+        if (ok && _fits64(s[0]) && _fits64(s[1]) && _fits64(s[3])) {
             r.live = true;
             r.work = s[1] > r.startWork ? s[1] - r.startWork : 0;
             r.blockHeight = uint64(s[3]);
@@ -130,10 +134,11 @@ contract SqueekOdometer is ERC721 {
     function _status(uint64 settled) internal view returns (uint8, uint256) {
         if (settled == 0) return (NAPPING, 0);
         uint64 from = settled > 3 ? settled - 3 : 0;
-        // RoundPage is dynamic: [offset, certifiedThroughRound, start(cumulativeWork, ..), end(cumulativeWork, ..)]
+        // RoundPage is dynamic: [offset, certifiedThroughRound, start(cumulativeWork, ..), end(cumulativeWork, ..)];
+        // an answer that does not start at that offset, or whose work words exceed their uint64, is not a page
         (bool ok, uint256[8] memory p) =
             _read(address(core), abi.encodeCall(ISqueekCore.roundPage, (from, settled, 3)), 6);
-        if (!ok) return (UNKNOWN, 0);
+        if (!ok || p[0] != HEAD || !_fits64(p[2]) || !_fits64(p[5])) return (UNKNOWN, 0);
         uint256 w = p[5] > p[2] ? p[5] - p[2] : 0;
         if (w == 0) return (NAPPING, 0);
         return (w >= ZOOMIES_WORK ? ZOOMIES : JOGGING, w);
@@ -152,6 +157,11 @@ contract SqueekOdometer is ERC721 {
         }
         (ok, b) = _read(address(squeeks), abi.encodeCall(ISqueekNFT.balanceOf, (who)), 1);
         return ok && b[0] > 0 ? 1 : 0;
+    }
+
+    /// @dev Whether a copied word is a valid encoding of the uint64 its field declares.
+    function _fits64(uint256 word) internal pure returns (bool) {
+        return word <= type(uint64).max;
     }
 
     /// @dev A gas-capped static call that copies at most `words` words of the answer (no return-data bomb) and fails

@@ -18,6 +18,9 @@ library OdometerArt {
     uint8 internal constant NAPPING = 0;
     uint8 internal constant JOGGING = 1;
     uint8 internal constant ZOOMIES = 2;
+    /// @notice The largest distance the odometer's five-digit screen can show, 99,999 km; past it the screen pegs
+    /// like a real odometer's, while the metadata keeps the exact figure.
+    uint256 internal constant MAX_SHOWN_MM = 99_999_999_999;
 
     // palette slots recolored per token (see tools/sprites.py)
     uint8 private constant RIM_DARK = 10;
@@ -323,12 +326,15 @@ library OdometerArt {
             )
         );
         if (d == 3) _add(b, '<rect x="9" y="34" width="22" height="5" fill="url(#v)"/>');
-        bytes memory t = r.live ? kmText(r.distanceMm) : bytes("?");
+        // the screen has five digit positions (22 px: "999.99" or "99999"), so like a real odometer it pegs at
+        // 99,999 km (the JSON keeps the exact figure); the text is never wider than the screen, so it never leaves it
+        bytes memory t = r.live ? kmText(r.distanceMm > MAX_SHOWN_MM ? MAX_SHOWN_MM : r.distanceMm) : bytes("?");
         uint256 w;
         for (uint256 i; i < t.length; i++) {
             w += uint8(Sprites.glyph(t[i])[0]) + 1;
         }
-        uint256 x0 = 30 - w;
+        // flush right on the screen (columns 9..30): the last glyph's spacing pixel falls on column 30
+        uint256 x0 = 31 - w;
         if (d == 4) {
             _digits(b, t, x0, '<path stroke="#5a2810" stroke-width="3" stroke-linecap="square" d="', false, false);
         }

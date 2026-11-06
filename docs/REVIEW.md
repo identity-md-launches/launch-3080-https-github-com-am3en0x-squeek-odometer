@@ -1,72 +1,115 @@
-# Adaptation review and open findings
+# Review findings and their disposition
 
-Scope: the unchanged SqueekOdometer application and art from upstream commit
+Scope: the SqueekOdometer application and art imported from upstream commit
 `8a3615240715afb93f6f0eaa78c0018a7d4676f2`, the ERC-721 inheritance used by it, and its external read boundaries.
-This is the adapting contributor's local review, not the independent adversarial signoff required before launch.
-The pinned [job brief](https://github.com/am3en0x/squeek-odometer/blob/8a3615240715afb93f6f0eaa78c0018a7d4676f2/docs/IMD_JOB.md)
-requests preservation of the contract and art. Consequently the findings below are reproduced and disclosed, not
-silently repaired or hidden by weakening tests. No application source or art was changed.
+The first adaptation preserved the contract and art byte for byte, as the pinned
+[job brief](https://github.com/am3en0x/squeek-odometer/blob/8a3615240715afb93f6f0eaa78c0018a7d4676f2/docs/IMD_JOB.md)
+asked, and disclosed the defects it found (R1, R2 below). The independent review of 2026-11-06 then reopened the
+accepted work with the findings below. This revision fixes the ones that affect the launch or the brief's own
+guarantee that `tokenURI` cannot revert for an existing token, and records the disposition of the rest. It is still
+not the independent adversarial signoff required before release.
 
-## R1 — noncanonical core words defeat the metadata failure boundary
+## Fixed in this revision
 
-Severity: medium for metadata availability, conditional on malformed/hostile dependency responses; no custody or
-transfer permission bypass was demonstrated. The ordinary typed SqueekCore ABI uses `uint64` cumulative work, so a
-conforming dependency cannot produce the oversized value in this reproduction.
+### F1 (high): the constructor reverted when deployed as the launch deploys it
 
-`SqueekOdometer._read` verifies call success and a minimum return length. It does not decode or range-check the
-words. `reading` then uses word 1 directly as a `uint256` and multiplies its delta by 887. A successfully returned
-out-of-range word can therefore panic, contradicting the brief's unconditional claim about a hostile dependency.
+The launch rehearses every constructor from its factory on an empty chain whose id is not Sepolia's, with IMD's
+launch wallet as `tx.origin`. The imported constructor reverted `WrongChain` on any chain other than 11155111 or
+31337, so the rehearsal parked the launch. The chain check is removed, together with the `WrongChain` error; the
+constructor now has no revert path at all. The Sepolia binding is the three immutable dependency addresses, which is
+what the brief relies on. The contract still has no owner, admin, role, initializer or upgrade path, so nothing
+resolves to the factory or to the launch wallet. `Deployment.t.sol` deploys from a fuzzed factory address on a fuzzed
+chain id with a fuzzed `tx.origin` and checks the getters and the absence of `owner()`, `getOwner()` and
+`DEFAULT_ADMIN_ROLE()`.
 
-Exact reproduction (`test/KnownLimitations.t.sol`):
+### F2 (medium): `reading()` and `tokenURI()` panicked on an oversized `cumulativeWork` word (former R1)
 
-1. Mint token 1 at work 11,048.
-2. Make `state()` return four words `[0, 2**256-1, 0, 1]` successfully.
-3. `reading(1)` and `tokenURI(1)` both revert with `Panic(0x11)` instead of producing unknown metadata.
+`_read` checked only call success and a minimum length; a successful `state()` answer whose word 1 exceeded
+`startWork + floor((2**256 - 1) / 887)` made `reading` and `tokenURI` revert with `Panic(0x11)` for every token.
+Reachable on Sepolia only through an upgrade of the SqueekCore proxy by Squeekchain's timelock (5-minute delay).
+Fix: every copied word the odometer uses is checked against the type its field declares. `settledThroughRound`,
+`cumulativeWork` and `blockHeight` must fit `uint64`; a word out of range fails the read exactly as a revert does, so
+the token reads *Unknown* and `tokenURI` still answers. A round page must start at ABI offset 32 and its two
+`cumulativeWork` words must fit `uint64`, else status is *Unknown* while the distance stays live. With the baseline
+and the live work both `uint64`, the distance multiplication cannot overflow. The reviewer's proof
+(`Proof_b39b0bea91d2`) passes; `ReviewFindings.t.sol` fuzzes all four state words.
 
-The related mint reproduction returns just `[0, 2**256-1]`. `mint()` succeeds and stores that noncanonical baseline.
-Once canonical `uint64` readings resume, the token's delta remains zero for every possible canonical work value.
-The length-only boundary also accepts incomplete ABI results and ignores a round page's dynamic offset. This is
-prefix parsing, not authentication of Squeekchain's data.
+### F3 (medium): `mint()` stored a non-canonical baseline for good (former R1, mint half)
 
-Suggested remediation for a separately authorized revision: validate the ranges of consumed typed fields, reject a
-malformed mint baseline with `CoreUnreadable`, and degrade malformed metadata responses to unknown. Review the
-round page's fixed prefix and offset against the actual dependency ABI. No setter or admin is needed for this fix.
+With no owner, burn or setter, a baseline above `uint64.max` froze the token at 0.00 km forever and spent the wallet's
+only mint. Fix: `mint` reverts `CoreUnreadable` when `settledThroughRound` or `cumulativeWork` does not fit `uint64`,
+so nothing is written and the wallet can mint once the core answers canonically. `uint64.max` itself is a valid
+baseline. The reviewer's proof (`Proof_33d582d967e8`) passes.
 
-## R2 — valid large distances underflow the SVG's text position
+### F4 (low): `tokenURI` reverted from 10,000,000 km (former R2)
 
-Severity: low; requires an extreme distance, but lies inside the declared `uint64` work domain. It contradicts the
-unqualified metadata-liveness claim even with an ABI-conforming dependency.
+Eight whole-kilometre digits are 32 px and the text origin `30 - w` underflowed. The input is a canonical `uint64`
+delta (11,273,957,159 work units), unreachable for about 21 years even at the protocol's cap of 10,000 work per
+round, but it falsified the brief's unqualified claim. Fix: the odometer screen has five digit positions (22 px:
+"999.99" or "99999"), so like a real odometer it pegs at 99,999 km (`OdometerArt.MAX_SHOWN_MM`); the JSON's
+`Distance (km)` attribute keeps the exact figure. Tested at the first eight-digit value and at `uint64.max` work, and
+the metadata fuzz covers the whole work domain.
 
-`OdometerArt._odometer` computes the text width and then `x0 = 30 - w`. Whole kilometres use four pixels per digit.
-Eight digits require 32 pixels, so a distance of 10,000,000 km causes checked subtraction to panic. `reading` still
-works, but `tokenURI` fails while that distance remains displayed. No token transfer or ownership operation is affected.
+### F5 (low): the digits were drawn one column too far left
 
-Exact boundary reproduction (`test_knownLimitation_largeCanonicalWorkOverflowsDisplayWidth`):
+The screen is columns 9 to 30; with origin `30 - w` the last lit column was 28 and the widest text, "100.00" to
+"999.99" (every Legend reading), started on the bezel at column 8. The origin is now `31 - w`: the last lit column is
+29 (one margin column on the right, as the comment "flush right" intended) and no text starts before column 9. The
+ten committed site SVGs were regenerated by the contract; the only difference is that shift. Tests parse the LCD
+digit path and check its columns for 0.00, 0.42, 100.00, 999.99, 1000, 99999, the "?" glyph, and a fuzzed `uint64`
+work.
 
-1. Mint with baseline zero.
-2. Set cumulative work to **11,273,957,158**: `tokenURI(1)` succeeds.
-3. Set it to **11,273,957,159**: distance is **10,000,000,000,033 mm**, and `tokenURI(1)` reverts with `Panic(0x11)`.
+### F7 (low, site only): the page used `idOf` as "your token"
 
-These are typed `MockCore` values, not corrupt raw words. The maximum possible `uint64` work is much larger.
-Suggested remediation for a separately authorized revision: choose a bounded display representation for very large
-values (for example a suffix or saturation), keep the actual numeric metadata separate, and fuzz the full work domain.
-Preserving every existing rendered image below the boundary would still be possible, but changing the renderer is
-outside this brief's preservation request.
+`idOf` is mint history and is never cleared, so after a sale the seller still saw the token as theirs and a buyer saw
+none. `dist/app.js` now calls `ownerOf` before labelling the minted token as the wallet's; when the wallet does not
+own it, the page says it minted that token and it now belongs to another wallet, and the mint button stays disabled
+because the wallet cannot mint again. A wallet that owns a token it did not mint is found through the newest
+`Transfer` log to it whose `ownerOf` still answers that wallet, walking back from the head in the same 50,000-block
+steps as the recent-mints list. The site is not part of the contracts launch and was not run in a browser; the change
+was checked for syntax only.
+
+### F9 (info): the provenance check failed on the accepted tree
+
+`tools/check_upstream.py` compared the tree against upstream hashes, but the 280 `lib/` sources had been reformatted
+by `forge fmt` during the adaptation (the compiled code is unchanged). [UPSTREAM.json](UPSTREAM.json) now records the
+hash of every imported file as committed (`files`, what the script checks) and, under `adapted`, the upstream hash
+and the reason for each file that differs: 2 in `src/` and 11 in `dist/` changed by this revision, and the 280
+reformatted `lib/` sources. The README no longer claims byte-for-byte preservation.
+
+## Reported, not changed
+
+### F6 (low): on a failed read the JSON publishes Distance 0.00, Stage Newbie and Squeek Holder No
+
+Reproduced. When `state()` fails, `reading` sets `live = false` and status *Unknown*, the screen shows "?", but the
+JSON's numeric and categorical attributes still carry the values computed from zero work, and a failed staking read
+falls back to the wallet balance (0 for a staker). This is the documented degradation and is left as is: the
+attribute set is read by name by the site and by indexers, `Distance (km)` is a numeric attribute that cannot carry
+"unknown", and the next successful read restores every value without any transaction. [SECURITY.md](SECURITY.md)
+now says exactly what a failed read publishes, so a consumer can treat Status *Unknown* as "the rest is not
+current". Changing the attribute set is a metadata design decision for the requester.
+
+### F8 (info): the 9,999 cap can be exhausted by throwaway contracts that mint in their constructor
+
+Reproduced and agreed: one-per-wallet is enforced literally, addresses are free, `_mint` makes no receiver check, so
+a constructor-minted token is stranded and the lockout at the cap is permanent. Any mitigation (allowlist, holder
+gating, per-block limits) changes the agreed free open mint, so the design is unchanged. [SECURITY.md](SECURITY.md)
+and the README now state that the lockout is permanent and the tokens unrecoverable.
 
 ## Verified properties and intentional limitations
 
 - One successful mint per address, including after transfer, with a lifetime cap of 9,999. The full cap was exercised
   through 9,999 real mint calls, without changing odometer storage. Addresses are not human identities: many-wallet
   minting and trait grinding are possible, and transfers can give a holder more than one odometer.
-- Mint state is atomic on a failed starting read. Mint uses `_mint` and never invokes an ERC-721 receiver callback.
-  Contract wallets are allowed and must provide their own way to move an NFT they mint.
+- Mint state is atomic on a failed or out-of-range starting read. Mint uses `_mint` and never invokes an ERC-721
+  receiver callback. Contract wallets are allowed and must provide their own way to move an NFT they mint.
 - Standard owner/operator/approved ERC-721 permissions remain intact. Safe receiver rejection rolls back state.
   A receiver callback can mint its own single token and transfer its received token; it cannot remint or bypass the cap.
-- Factory construction on empty Sepolia requires no external code, value, initialization, signer, owner or admin.
-  Chain 31337 is also allowed for local testing; the literal phrase "reverts outside Sepolia" needs that exception.
-- All dependency calls are static, forward at most 500,000 gas each and copy only the consumed prefix. Tests exercise
-  short responses, missing code, reverts, 128 KiB success/revert payloads, gas exhaustion and attempted writes/reentry.
-  These checks bound the read operation, not the validity of returned values or the entire renderer.
+- Factory construction requires no external code, value, initialization, signer, owner, admin or particular chain id.
+- All dependency calls are static, forward at most 500,000 gas each and copy only the consumed prefix, then check the
+  copied words' ranges and the page's offset. Tests exercise short responses, missing code, reverts, 128 KiB
+  success/revert payloads, gas exhaustion, attempted writes/reentry and out-of-range words. These checks bound the
+  read and its layout, not the truth of the values.
 - Holder power follows the current token owner. Staking NFT power takes precedence; SQK staking power alone does not
   qualify. A failed staking read falls back to the NFT wallet balance. Tiers do not confer transfer or admin privileges.
 - `refresh` and `refreshAll` only log ERC-4906 events; tests record storage accesses and check no writes. They do not
@@ -75,27 +118,26 @@ outside this brief's preservation request.
   an ownership index. Status is the latest three *settled* rounds, not a wall-clock staleness check: if settlement
   stops, an old pace can remain visible.
 - There is no payable entry point, fee, custody service, recovery, owner, upgrade, proxy or withdrawal. Forced ETH or
-  accidentally sent assets are not recoverable. Immutable dependencies cannot be repointed after a redeployment.
+  accidentally sent assets are not recoverable. Immutable dependencies cannot be repointed: SqueekCore and
+  SqueekStaking are upgradeable proxies under Squeekchain's timelock, and an upgrade that changes their answers makes
+  tokens read *Unknown* (and mints revert) until it is undone, with no repair path in this contract.
 - Trait rolls are deterministic from token id and baseline; they are not a verifiable randomness source. No monetary
   randomness, prize, payout or financial promise is implemented.
 
 ## Analysis limits and launch responsibilities
 
-Solidity 0.8.26 build, local tests, seeded fuzzing, stateful invariants, formatting, ABI comparison, source hash
-comparison, and offline gallery reproduction were performed. The test suite explicitly includes the above defect
-reproducers, so a green suite must not be read as evidence that the defects are fixed.
+Solidity 0.8.26 build, local tests, seeded fuzzing, stateful invariants, formatting, ABI comparison, provenance
+comparison and offline gallery reproduction were performed, and the two reviewer proofs were run (failing before,
+passing after). Foundry emits lint warnings on the source (packed string construction, integer casts and `_mint`).
+The packed data builds display strings, not signed/authenticated hashes; the unsafe-mint warning reflects the
+intended absence of a mint callback. Slither and Mythril were not run here, and no independent audit is claimed.
 
-Foundry emits lint warnings on the unchanged source (including packed string construction, integer casts and `_mint`).
-The packed data builds display strings, not signed/authenticated hashes; the unsafe-mint warning reflects the intended
-absence of a mint callback. These contextual explanations do not constitute an independent static-analysis verdict.
-Slither and Mythril were not run, and no independent audit is claimed.
+The live Sepolia fork and website wallet integration were not rerun. Dependency addresses are exactly those supplied
+in the brief, not guessed; their current bytecode and behavior need confirmation by the independent
+reviewer/deployment service. The default suite requires no RPC or external account. The optional fork profile checks
+the supplied historical release at block 12,077,300 and requires an archive-capable RPC; it is not a check of the
+live launch block.
 
-The live Sepolia fork and website wallet integration were not rerun in this adaptation. Dependency addresses are
-exactly those supplied in the brief, not guessed; their current bytecode and behavior need confirmation by the
-independent reviewer/deployment service. The default suite requires no RPC or external account. The optional fork
-profile checks the supplied historical release at block 12,077,300 and requires an archive-capable RPC; it is not a
-check of the live launch block.
-
-The independent review must adjudicate R1 and R2 before release. The deployment service owns the later manifest,
-actual factory deployment, explorer verification and recording the deployed address/block. A separate site operator
-may then configure and host the unchanged static site. This assignment did not perform any of those external actions.
+The deployment service owns the later manifest, actual factory deployment, explorer verification and recording the
+deployed address/block. A separate site operator may then configure and host the static site. This work performed
+none of those external actions.

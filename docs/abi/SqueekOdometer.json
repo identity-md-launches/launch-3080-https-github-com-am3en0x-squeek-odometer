@@ -862,10 +862,5 @@
     "type": "error",
     "name": "SoldOut",
     "inputs": []
-  },
-  {
-    "type": "error",
-    "name": "WrongChain",
-    "inputs": []
   }
 ]

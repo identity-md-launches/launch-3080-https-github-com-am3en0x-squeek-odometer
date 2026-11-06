@@ -42,13 +42,12 @@ contract OdometerPropertiesTest is OdometerTestBase {
         }
     }
 
-    function testFuzz_metadataIsDecodableInSupportedDisplayRange(uint64 start, uint64 extra, uint16 pace, uint8 tier)
+    function testFuzz_metadataIsDecodableOverTheWholeWorkDomain(uint64 start, uint64 extra, uint16 pace, uint8 tier)
         public
     {
-        // Wider inputs have a documented upstream renderer defect. This test does not silently assume
-        // that full uint64 work is renderable; KnownLimitations.t.sol exercises the first failing value.
-        uint64 work = uint64(bound(extra, 0, 11_273_957_158));
+        // Every uint64 work delta renders: the screen pegs at 9,999,999 km and the JSON keeps the exact figure.
         // Keep total work >= recent round work so the typed mock has a valid ledger history.
+        uint64 work = uint64(bound(extra, 0, type(uint64).max - pace));
         start = uint64(bound(start, pace, type(uint64).max - work));
         core.set(0, start, 1);
         _mint(alice);

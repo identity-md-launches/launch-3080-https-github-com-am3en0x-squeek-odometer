@@ -70,10 +70,11 @@ contract SqueekOdometerTest is Test {
         odo.mint();
     }
 
-    function test_onlySepoliaOrLocal() public {
+    function test_constructorHasNoChainGuard() public {
+        // the launch's rehearsal chain is not Sepolia; the Sepolia binding is the three addresses
         vm.chainId(1);
-        vm.expectRevert(SqueekOdometer.WrongChain.selector);
-        new SqueekOdometer(address(core), address(nft), address(staking));
+        SqueekOdometer other = new SqueekOdometer(address(core), address(nft), address(staking));
+        assertEq(address(other.core()), address(core));
     }
 
     // ---- distance and stage

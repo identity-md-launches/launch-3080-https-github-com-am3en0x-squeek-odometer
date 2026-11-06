@@ -16,19 +16,24 @@ plain ETH transfers revert.
 
 ## Imported launch handoff
 
-The application, art, vendored libraries and static site are preserved byte for byte from
+The application, art, vendored libraries and static site come from
 [`8a3615240715afb93f6f0eaa78c0018a7d4676f2`](https://github.com/am3en0x/squeek-odometer/tree/8a3615240715afb93f6f0eaa78c0018a7d4676f2).
-`python3 tools/check_upstream.py` verifies these 327 files offline using [the provenance record](docs/UPSTREAM.json).
-The adaptation adds adversarial tests, deployment rehearsals and current review notes. It removes the gallery's EVM
-filesystem grants, makes that helper return data for a Python exporter, and pins the assignment's fuzz seed.
-The upstream `launch.json` is intentionally absent: the launch service's separate manifest step supplies it.
+`python3 tools/check_upstream.py` verifies the 327 imported files offline against [the provenance record](docs/UPSTREAM.json),
+which holds the hash of each file as committed here and, under `adapted`, the upstream hash and the reason for every
+file that differs. The adaptation adds adversarial tests, deployment rehearsals and review notes, removes the gallery's
+EVM filesystem grants, makes that helper return data for a Python exporter, and pins the assignment's fuzz seed. The
+vendored `lib/` sources were reformatted by `forge fmt`; their compiled code is unchanged. The upstream `launch.json`
+is intentionally absent: the launch service's separate manifest step supplies it.
 
-**Review result:** the upstream claim that metadata never reverts is not true for all inputs. Two reproduced
-liveness defects remain in the unchanged source: noncanonical work can overflow distance arithmetic, and a distance
-of 10,000,000 km cannot fit the display's arithmetic. A malformed mint baseline is also accepted.
-[Review findings and exact reproductions](docs/REVIEW.md) distinguish these defects from the supported behavior.
-Passing tests include explicit defect reproducers; they do not certify unconditional metadata availability or replace
-the required independent review. No deployment or broadcast has been performed by this adaptation.
+**Review revision (2026-11-06):** the independent review reopened the accepted import with three defects, which this
+revision fixes in the contract and the art. The constructor no longer checks the chain id, because the launch
+rehearses it from its factory on a chain that is not Sepolia and it reverted there. Every word copied from a
+Squeekchain answer is now checked against the `uint64` its field declares: a non-canonical `state()` answer makes
+`reading` and `tokenURI` degrade to *unknown* instead of overflowing, and `mint` refuses it with `CoreUnreadable`
+instead of storing a baseline no real reading could ever exceed. The odometer screen pegs at 99,999 km instead of
+underflowing its text origin, and its digits now start one column later so they sit on the screen for every width.
+[REVIEW.md](docs/REVIEW.md) lists every finding with its disposition. Passing tests still do not replace the required
+independent review, and no deployment or broadcast has been performed by this work.
 
 ## Build and verify
 
@@ -69,7 +74,8 @@ and the fonts are bundled (`dist/fonts/`, SIL OFL). Design tokens and components
 ## Contracts and deployment parameters
 
 Deploy one contract in the launch's single factory transaction. The constructor is nonpayable, takes only static
-arguments, makes no external calls and reverts outside Sepolia (local chain 31337 is allowed for tests).
+arguments, makes no external calls and does not check the chain id: the launch rehearses it on an empty chain whose
+id is not Sepolia's, and it must deploy there. What binds the token to Sepolia is the three addresses below.
 
 | Contract | Constructor arguments in declaration order |
 | --- | --- |
@@ -79,7 +85,7 @@ The three addresses are Squeekchain's Sepolia release `core-sepolia-20261103`
 ([deployments](https://docs.squeekchain.com/developers/#deployments)) and are immutable. There is no `$owner` argument:
 the contract has no privileged role. No initialization call, no funding, no launch token, distributor or pool.
 The later manifest step must use exactly these three address arguments, zero value and no initialization call.
-Runtime size is **23,212 bytes**, with **1,364 bytes** below EIP-170. The initcode is **23,947 bytes** before the
+Runtime size is **23,398 bytes**, with **1,178 bytes** below EIP-170. The initcode is **24,082 bytes** before the
 96 bytes of constructor arguments. The local CREATE2 rehearsal succeeds with dependencies absent. [IMD_JOB.md](docs/IMD_JOB.md) is the text for
 the IMD launch request.
 
@@ -101,9 +107,12 @@ Who can do what:
 - Transfers and approvals: standard, unmodified OpenZeppelin.
 - Nothing else writes. No owner, admin, pause, upgrade, payable function, `receive` or withdrawal.
 
-Every Squeekchain read is a gas-capped `staticcall` that copies a fixed number of words. Reverts, short replies and
-gas exhaustion degrade to unknown metadata or a missing holder tier; mint fails if its starting read fails. Successful
-responses are trusted for their values and are not fully ABI-validated, and extreme distances can break rendering.
+Every Squeekchain read is a gas-capped `staticcall` that copies a fixed number of words and checks each word it uses
+against the type its field declares (`uint64` for rounds, work and block height; a round page must start at ABI
+offset 32). Reverts, short replies, gas exhaustion and out-of-range words degrade to unknown metadata or a missing
+holder tier; mint fails if its starting read fails or is out of range. `tokenURI` is total over the whole `uint64`
+work domain: the screen pegs at 99,999 km while the JSON keeps the exact distance. Values inside their ranges are
+trusted as Squeekchain's data; they are not authenticated.
 [Security handoff](docs/SECURITY.md) describes these limits, [ABI](docs/ABI.md) the client interface and [errors](docs/ERRORS.md) what each revert means.
 
 ## How a token reads the wheel
@@ -140,9 +149,10 @@ python3 tools/export_gallery.py                             # the contract's own
 
 ## After launch
 
-1. **Independent reviewer and deployment service:** adjudicate [the open findings](docs/REVIEW.md), confirm the three
-   Sepolia dependencies and their ABI layouts, deploy `SqueekOdometer` with the arguments above, verify the source on the explorer,
-   and write the address and deployment block into `dist/config.js` (or ship `imd-deployment.json` next to the page).
+1. **Independent reviewer and deployment service:** confirm the three Sepolia dependencies and their ABI layouts
+   (both proxies can be upgraded by Squeekchain's timelock; see [REVIEW.md](docs/REVIEW.md)), deploy `SqueekOdometer`
+   with the arguments above, verify the source on the explorer, and write the address and deployment block into
+   `dist/config.js` (or ship `imd-deployment.json` next to the page).
 2. **Site operator, if a site is requested separately:** populate the real deployed address and block, choose an RPC
    with sufficient `eth_call` gas, and host `dist/`. Site hosting is outside this contracts-only launch. The empty
    address in `dist/config.js` is an explicit pre-deployment placeholder, never a guessed contract address.
@@ -153,8 +163,10 @@ python3 tools/export_gallery.py                             # the contract's own
 There are no owner-settable settings or post-launch configuration transactions. Nobody can repoint the immutable
 dependencies or repair deployed code. Users pay Sepolia transaction gas; there is no mint price or maintenance keeper.
 A dependency outage can stop new mints; recovery at the same address restores reads without an administrative action.
-Clients should handle RPC failures and the documented metadata panics. Refresh events request cache invalidation;
-marketplaces choose whether to honor them.
+During an outage `tokenURI` still answers, with status *Unknown*, a "?" on the screen and zero distance (see
+[SECURITY.md](docs/SECURITY.md)). Clients should handle RPC failures. Refresh events request cache invalidation;
+marketplaces choose whether to honor them. The 9,999 cap is first come, first served per address, and addresses are
+free: a token minted by a contract that cannot transfer it is stranded, and once the cap is reached nobody mints again.
 
 ## License
 

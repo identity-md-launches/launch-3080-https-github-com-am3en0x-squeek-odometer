@@ -1,8 +1,9 @@
 // Squeek Odometer site: plain JSON-RPC, no libraries. Reads go to a public Sepolia RPC so the page works without a
 // wallet; only the mint goes through the wallet.
 const CFG = window.ODOMETER_CONFIG
-const SEL = { mint: '0x1249c58b', idOf: '0xd94fe832', tokenURI: '0xc87b56dd', totalMinted: '0xa2309ff8', refresh: '0x9c75dd35' }
+const SEL = { mint: '0x1249c58b', idOf: '0xd94fe832', ownerOf: '0x6352211e', tokenURI: '0xc87b56dd', totalMinted: '0xa2309ff8', refresh: '0x9c75dd35' }
 const MINTED = '0xc9d0543a84d3510329c0783b91576878ceb484e8699944cb5610c3436b3b8e39' // Minted(uint256,address,uint256)
+const TRANSFER = '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef' // Transfer(address,address,uint256)
 const CHAIN_HEX = '0x' + CFG.chainId.toString(16)
 const $ = (id) => document.getElementById(id)
 let account = null
@@ -42,19 +43,51 @@ async function showSupply() {
   try { $('supply').textContent = Number(BigInt(await call(SEL.totalMinted))).toLocaleString('en-US') + ' / 9,999' } catch {}
 }
 
+// ownerOf(id) as a lowercase address, or null for a token that does not exist.
+async function ownerOf(id) {
+  try { return '0x' + (await call(SEL.ownerOf + word(id))).slice(-40).toLowerCase() } catch { return null }
+}
+
+// The newest token transferred to this wallet that it still owns, found through Transfer logs (walking back from the
+// head in 50,000-block steps, as showRecent does); 0 when there is none.
+async function ownedByTransfer() {
+  const head = Number(BigInt(await rpc('eth_blockNumber')))
+  for (let to = head; to >= CFG.fromBlock; to -= 50_000) {
+    const from = Math.max(CFG.fromBlock, to - 49_999)
+    const logs = await rpc('eth_getLogs', [{ address: CFG.address, topics: [TRANSFER, null, '0x' + word(account)], fromBlock: '0x' + from.toString(16), toBlock: '0x' + to.toString(16) }])
+    for (const l of logs.reverse()) {
+      const id = Number(BigInt(l.topics[3]))
+      if ((await ownerOf(id)) === account) return id
+    }
+  }
+  return 0
+}
+
+// idOf is mint history, never cleared: a wallet that minted and sold still has its id there, and a buyer's token is not
+// in it at all. Only a token ownerOf says is the wallet's is shown as its own.
 async function showMine() {
   if (!account || !CFG.address) return
-  const id = Number(BigInt(await call(SEL.idOf + word(account))))
+  const minted = Number(BigInt(await call(SEL.idOf + word(account))))
+  if (minted) { $('mint').disabled = true; $('mint').textContent = 'Minted' } else { $('mint').disabled = false }
+  let id = minted && (await ownerOf(minted)) === account ? minted : 0
+  let since = 'since your mint'
+  if (!id) {
+    try { id = await ownedByTransfer() } catch { id = 0 }
+    since = 'since its mint'
+  }
   mineId = id
-  if (!id) { $('mint').disabled = false; $('mine-caption').textContent = 'Yours shows up here after you mint.'; return }
+  if (!id) {
+    $('mine-caption').textContent = minted
+      ? `You minted #${minted} and it now belongs to another wallet. Each wallet mints once.`
+      : 'Yours shows up here after you mint.'
+    return
+  }
   const meta = await token(id)
   window.LedBoard?.set({ mine: Number(trait(meta, 'Distance (km)')) })
   $('mine').closest('figure').classList.add('minted')
   $('mine').src = meta.image
   $('mine').alt = `Your odometer, #${id}`
-  $('mine-caption').textContent = `#${id} \u00b7 ${km(meta)} km since your mint \u00b7 ${trait(meta, 'Stage')} \u00b7 ${trait(meta, 'Status')}`
-  $('mint').disabled = true
-  $('mint').textContent = 'Minted'
+  $('mine-caption').textContent = `#${id} \u00b7 ${km(meta)} km ${since} \u00b7 ${trait(meta, 'Stage')} \u00b7 ${trait(meta, 'Status')}`
   $('refresh').hidden = false
 }
 
