@@ -1,0 +1,14 @@
+{
+  "kind": "evm_contracts",
+  "contracts": [
+    {
+      "contract": "SqueekOdometer",
+      "constructorArgs": [
+        "0xFD6C166D4B8E2962E65746a13e5a0797CD4dE0c4",
+        "0xC4C7982657f00509548F3a3a41db7FA439a6856B",
+        "0x50fd1780526C3186A0c037c7622203bC4fb611ca"
+      ]
+    }
+  ],
+  "notes": "Deploys only SqueekOdometer on Sepolia. Constructor arguments are the approved brief's existing SqueekCore, SqueekNFT and SqueekStaking addresses, in that order. The contract has no privileged owner or admin, requires no initialization or deployment funding, and makes no external calls during construction."
+}
